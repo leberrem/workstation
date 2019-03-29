@@ -1,0 +1,43 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    helm_url: https://storage.googleapis.com/kubernetes-helm/helm-v2.13.0-linux-amd64.tar.gz
+    helm_tmp: /tmp/helm
+
+  tasks:
+
+    - name: Creates helm temporary directory
+      file:
+        path: "{{ helm_tmp }}"
+        state: directory
+        
+    - name: Download helm
+      get_url:
+        url: "{{ helm_url }}"
+        dest: "{{ helm_tmp }}/helm.tar.gz"
+
+    - name: Extract helm
+      unarchive:
+        src: "{{ helm_tmp }}/helm.tar.gz"
+        dest: "{{ helm_tmp }}"
+
+    - name: Move helm to /usr/local/bin/
+      command: mv {{ helm_tmp }}/linux-amd64/helm /usr/local/bin/helm
+
+    - name: Move tiller to /usr/local/bin/
+      command: mv {{ helm_tmp }}/linux-amd64/tiller /usr/local/bin/tiller
+
+    - name: install bash-completion (apt)
+      apt:
+        name: bash-completion
+        state: present
+
+    - name: activation auto-completion for helm
+      shell: helm completion bash >/etc/bash_completion.d/helm
+
+    - name: Remove helm temporary directory
+      file:
+        path: "{{ helm_tmp }}"
+        state: absent

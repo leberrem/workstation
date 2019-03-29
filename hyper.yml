@@ -1,0 +1,28 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    hyper_url: https://releases.hyper.is/download/deb
+    hyper_tmp: /tmp/hyper
+
+  tasks:
+
+    - name: Creates hyper temporary directory
+      file:
+        path: "{{ hyper_tmp }}"
+        state: directory
+        
+    - name: Download hyper
+      get_url:
+        url: "{{ hyper_url }}"
+        dest: "{{ hyper_tmp }}/hyper.deb"
+
+    - name: Install my_package
+      apt:
+        deb: "{{ hyper_tmp }}/hyper.deb"
+
+    - name: Remove hyper temporary directory
+      file:
+        path: "{{ hyper_tmp }}"
+        state: absent

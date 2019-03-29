@@ -1,0 +1,42 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: install dependencies (apt)
+      become: yes
+      apt:
+        name:
+          - unzip
+        state: present
+
+    - name: get latest terraform version id
+      uri:
+        url: 'https://checkpoint-api.hashicorp.com/v1/check/terraform'
+        method: GET
+        status_code: 200
+        timeout: 10
+      register: release
+
+    - set_fact:
+        terraform_version: "{{ release.json | json_query('current_version') }}"
+
+    - debug: 
+        msg: "terraform latest version : {{ terraform_version }}"
+
+    - name: Download Terraform archive
+      get_url:
+        url: 'https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip'
+        dest: '/tmp/terraform-{{ terraform_version }}.zip'
+
+    - name: Unarchive Terraform archive
+      become: yes
+      unarchive:
+        src: /tmp/terraform-{{ terraform_version }}.zip
+        dest: /usr/bin/
+        copy: no
+
+    - name: Remove Terraform archive
+      file:
+        path: /tmp/terraform-{{ terraform_version }}.zip
+        state: absent

@@ -1,0 +1,31 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: install key (apt)
+      apt_key:
+        url: 'https://packages.cloud.google.com/apt/doc/apt-key.gpg'
+        state: present
+
+    - name: install kubernetes repo (apt)
+      apt_repository:
+        repo: deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main
+        filename: kubernetes
+        state: present
+
+    - name: install kubectl (apt)
+      apt:
+        name: kubectl
+        state: present
+        
+    - name: install bash-completion (apt)
+      apt:
+        name: bash-completion
+        state: present
+
+    - name: activation auto-completion for kubectl
+      shell: kubectl completion bash >/etc/bash_completion.d/kubectl
+
+    

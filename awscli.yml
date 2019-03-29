@@ -1,0 +1,9 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: install awscli
+      pip:
+        name: awscli
+        extra_args: --upgrade --user

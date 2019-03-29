@@ -1,0 +1,12 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: install terminator (apt)
+      become: yes
+      apt:
+        name: terminator
+        state: present
+
+        

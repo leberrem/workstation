@@ -1,0 +1,33 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: Download postman archive
+      get_url:
+        url: 'https://dl.pstmn.io/download/latest/linux64'
+        dest: '/tmp/postman.tar.gz'
+
+    - name: Unarchive postman archive
+      become: yes
+      unarchive:
+        src: /tmp/postman.tar.gz
+        dest: /opt
+        copy: no
+
+    - name: Create symbolic link 
+      become: yes
+      file:
+        src: "/opt/Postman/Postman"
+        dest: "/usr/bin/postman"
+        state: link
+
+    - name: create shortcut
+      template:
+        src: templates/postman.j2
+        dest: ~/.local/share/applications/postman.desktop
+
+    - name: Remove postman archive
+      file:
+        path: /tmp/postman.tar.gz
+        state: absent
