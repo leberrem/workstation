@@ -1,5 +1,8 @@
 requirements:
-	ansible-galaxy install -f -r requirements.yml
+	ansible-galaxy install -f -r requirements.yml 
+
+certificate:
+	ansible-playbook certificate.yml --extra-vars "ansible_os_family=Debian"
 	
 vscode:
 	ansible-playbook vscode.yml

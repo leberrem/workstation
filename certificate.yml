@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become : yes
+  tasks:
+
+    - name: Add SIRIUS to trusted authority
+      include_role:
+        name: add-ca-authority
+      vars:
+        ca_certificates_trust_file: files/SAB2i-SIRIUS-CA.crt
+
