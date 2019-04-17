@@ -22,6 +22,23 @@
       apt:
         deb: "{{ hyper_tmp }}/hyper.deb"
 
+    - name: default configuration
+      become: no
+      template:
+        src: templates/hyper.j2
+        dest: ~/.hyper.js
+
+    # - name: install plugins
+    #   become: no
+    #   command: "hyper install {{ item }}"
+    #   with_items:
+    #     - "hyperterm-cursor"
+    #     - "hyper-blink"
+    #     - "hyper-tab-icons"
+    #     - "hypercwd"
+    #     - "hyper-dracula"
+    #     - "hyperline"
+
     - name: Remove hyper temporary directory
       file:
         path: "{{ hyper_tmp }}"
