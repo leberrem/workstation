@@ -1,0 +1,10 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: add PS1 configuration
+      blockinfile:
+        dest: ~/.bashrc
+        block: "{{ lookup('template', 'templates/ps1.j2') }}"
+        marker: "# {mark} ANSIBLE MANAGED BLOCK"

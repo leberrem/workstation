@@ -3,7 +3,10 @@ requirements:
 
 certificate:
 	ansible-playbook certificate.yml --extra-vars "ansible_os_family=Debian"
-	
+
+ps1:
+	ansible-playbook PS1.yml
+
 vscode:
 	ansible-playbook vscode.yml
 
