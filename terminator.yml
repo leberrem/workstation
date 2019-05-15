@@ -9,4 +9,15 @@
         name: terminator
         state: present
 
+    - name: Creates hyper temporary directory
+      file:
+        path: "~/.config/terminator"
+        state: directory
+
+    - name: default configuration
+      become: no
+      template:
+        src: templates/terminator.j2
+        dest: ~/.config/terminator/config
+
         
