@@ -12,7 +12,7 @@ function parse_git_branch() {
 
 # get current status of git repo
 function parse_git_dirty {
-	status=`git status 2>&1 | tee`
+	status=`LANG=en_GB git status 2>&1 | tee`
 	dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
 	untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
 	ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
@@ -21,22 +21,22 @@ function parse_git_dirty {
 	deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
 	bits=''
 	if [ "${renamed}" == "0" ]; then
-		bits=">${bits}"
+		bits=$'\u21C4'"${bits}" # CHANGE
 	fi
 	if [ "${ahead}" == "0" ]; then
-		bits="*${bits}"
+		bits=$'\u2191'"${bits}" # UP ARROW
 	fi
 	if [ "${newfile}" == "0" ]; then
-		bits="+${bits}"
+		bits=$'\u2605'"${bits}" # STAR
 	fi
 	if [ "${untracked}" == "0" ]; then
-		bits="?${bits}"
+		bits=$'\uFE16'"${bits}" # QUESTION
 	fi
 	if [ "${deleted}" == "0" ]; then
-		bits="x${bits}"
+		bits=$'\u2620'"${bits}" # SKULL
 	fi
 	if [ "${dirty}" == "0" ]; then
-		bits="!${bits}"
+		bits=$'\u2726'"${bits}" # HYPER
 	fi
 	if [ ! "${bits}" == "" ]; then
 		echo " ${bits}"
@@ -45,4 +45,4 @@ function parse_git_dirty {
 	fi
 }
 
-export PS1=$'\[\e[32m\]\u269B \u\[\e[m\] \[\e[34m\]@ \h \w\[\e[m\] \[\e[32m\]`parse_git_branch`\[\e[m\]\n\[\e[32m\]\u2937 \\$ \u25B8\[\e[m\] '
+export PS1=$'\[\e[32m\]\u250C \u\[\e[m\] \[\e[34m\]@ \h \w\[\e[m\] \[\e[32m\]`parse_git_branch`\[\e[m\]\n\[\e[32m\]\u2514 \\$ \u27A4\[\e[m\] '
