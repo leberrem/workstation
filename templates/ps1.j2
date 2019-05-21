@@ -1,17 +1,17 @@
 # get current branch in git repo
 function parse_git_branch() {
-	if [ -d .git ]
+	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ ! "${BRANCH}" == "" ]
 	then
-		BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-		if [ ! "${BRANCH}" == "" ]
-		then
-			STAT=`parse_git_dirty`
-			echo "[${BRANCH}${STAT}]"
-		else
-			echo "[]"
-		fi
+		STAT=`parse_git_dirty`
+		echo "[${BRANCH}${STAT}]"
 	else
-		echo ""
+		if [ -d .git ]
+		then
+			echo "[]"
+		else
+			echo ""
+		fi
 	fi
 }
 
