@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: install meld (apt)
+      become: yes
+      apt:
+        name: meld
+        state: present
+

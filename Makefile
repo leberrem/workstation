@@ -10,6 +10,9 @@ ps1:
 vscode:
 	ansible-playbook vscode.yml
 
+meld:
+	ansible-playbook meld.yml
+
 terminator:
 	ansible-playbook terminator.yml
 
