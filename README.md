@@ -40,6 +40,10 @@ make postman
 
 make hyper
 
+## dive
+
+make dive
+
 ## requirements
 
 python : `sudo apt install python`<br>
