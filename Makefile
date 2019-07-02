@@ -34,6 +34,9 @@ kubectl:
 helm:
 	ansible-playbook helm.yml
 
+dive:
+	ansible-playbook dive.yml
+
 docker:
 	ansible-playbook docker.yml --extra-vars "ansible_os_family=Debian"	--extra-vars "ansible_distribution=Ubuntu"	--extra-vars "ansible_distribution_release=bionic"
 

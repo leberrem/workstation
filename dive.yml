@@ -1,0 +1,28 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    dive_url: https://github.com/wagoodman/dive/releases/download/v0.7.2/dive_0.7.2_linux_amd64.deb
+    dive_tmp: /tmp/dive
+
+  tasks:
+
+    - name: Creates dive temporary directory
+      file:
+        path: "{{ dive_tmp }}"
+        state: directory
+        
+    - name: Download dive
+      get_url:
+        url: "{{ dive_url }}"
+        dest: "{{ dive_tmp }}/dive.deb"
+
+    - name: Install dive package
+      apt:
+        deb: "{{ dive_tmp }}/dive.deb"
+
+    - name: Remove dive temporary directory
+      file:
+        path: "{{ dive_tmp }}"
+        state: absent
