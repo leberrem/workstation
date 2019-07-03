@@ -34,4 +34,10 @@
         name: "code"
         state: present
 
+    - name: install VS Code extensions
+      shell: code --install-extension {{ item }} --force
+      with_items: 
+        - ms-azuretools.vscode-docker
+        - vscoss.vscode-ansible
+
         
