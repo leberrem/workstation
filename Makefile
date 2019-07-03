@@ -39,9 +39,3 @@ dive:
 
 docker:
 	ansible-playbook docker.yml --extra-vars "ansible_os_family=Debian"	--extra-vars "ansible_distribution=Ubuntu"	--extra-vars "ansible_distribution_release=bionic"
-
-set_proxy:
-	ansible-playbook set_proxy.yml --extra-vars "ansible_os_family=Debian"
-
-unset_proxy:
-	ansible-playbook unset_proxy.yml	
