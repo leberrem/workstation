@@ -49,3 +49,9 @@ make dive
 python : `sudo apt install python`<br>
 pip : `sudo apt install python-pip`<br>
 ansible : `sudo pip install ansible`
+
+SUDO NO PASSWORD
+```
+sudo visudo
+<$USER>   ALL=(ALL) NOPASSWD:ALL
+```
