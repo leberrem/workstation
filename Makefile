@@ -37,5 +37,11 @@ helm:
 dive:
 	ansible-playbook dive.yml
 
+slack:
+	ansible-playbook slack.yml
+
+discord:
+	ansible-playbook discord.yml
+
 docker:
 	ansible-playbook docker.yml --extra-vars "ansible_os_family=Debian"	--extra-vars "ansible_distribution=Ubuntu"	--extra-vars "ansible_distribution_release=bionic"

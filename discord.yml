@@ -1,0 +1,28 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    discord_url: https://discordapp.com/api/download?format=deb&platform=linux
+    discord_tmp: /tmp/discord
+
+  tasks:
+
+    - name: Creates discord temporary directory
+      file:
+        path: "{{ discord_tmp }}"
+        state: directory
+        
+    - name: Download discord
+      get_url:
+        url: "{{ discord_url }}"
+        dest: "{{ discord_tmp }}/discord.deb"
+
+    - name: Install my_package
+      apt:
+        deb: "{{ discord_tmp }}/discord.deb"
+
+    - name: Remove discord temporary directory
+      file:
+        path: "{{ discord_tmp }}"
+        state: absent

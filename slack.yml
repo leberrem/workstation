@@ -1,0 +1,28 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    slack_url: https://downloads.slack-edge.com/linux_releases/slack-desktop-3.4.2-amd64.deb
+    slack_tmp: /tmp/slack
+
+  tasks:
+
+    - name: Creates slack temporary directory
+      file:
+        path: "{{ slack_tmp }}"
+        state: directory
+        
+    - name: Download slack
+      get_url:
+        url: "{{ slack_url }}"
+        dest: "{{ slack_tmp }}/slack.deb"
+
+    - name: Install my_package
+      apt:
+        deb: "{{ slack_tmp }}/slack.deb"
+
+    - name: Remove slack temporary directory
+      file:
+        path: "{{ slack_tmp }}"
+        state: absent
