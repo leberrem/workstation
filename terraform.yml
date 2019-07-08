@@ -46,3 +46,6 @@
       file:
         path: /tmp/terraform-{{ terraform_version }}.zip
         state: absent
+    
+    - name: install terraform autocomplete
+      shell: terraform -install-autocomplete
