@@ -17,6 +17,7 @@
       get_url:
         url: "{{ hyper_url }}"
         dest: "{{ hyper_tmp }}/hyper.deb"
+        force: yes
 
     - name: Install my_package
       apt:

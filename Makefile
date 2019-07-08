@@ -52,3 +52,5 @@ arduino:
 openstack:
 	ansible-playbook openstack.yml
 
+simplenote:
+	ansible-playbook simplenote.yml

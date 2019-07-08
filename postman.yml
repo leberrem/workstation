@@ -7,6 +7,7 @@
       get_url:
         url: 'https://dl.pstmn.io/download/latest/linux64'
         dest: '/tmp/postman.tar.gz'
+        force: yes
 
     - name: Unarchive postman archive
       become: yes

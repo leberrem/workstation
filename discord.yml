@@ -17,6 +17,7 @@
       get_url:
         url: "{{ discord_url }}"
         dest: "{{ discord_tmp }}/discord.deb"
+        force: yes
 
     - name: Install my_package
       apt:

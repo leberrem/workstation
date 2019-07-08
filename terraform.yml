@@ -34,6 +34,7 @@
       get_url:
         url: 'https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip'
         dest: '/tmp/terraform-{{ terraform_version }}.zip'
+        force: yes
 
     - name: Unarchive Terraform archive
       become: yes

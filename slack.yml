@@ -17,6 +17,7 @@
       get_url:
         url: "{{ slack_url }}"
         dest: "{{ slack_tmp }}/slack.deb"
+        force: yes
 
     - name: Install my_package
       apt:

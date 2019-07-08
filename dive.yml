@@ -17,6 +17,7 @@
       get_url:
         url: "{{ dive_url }}"
         dest: "{{ dive_tmp }}/dive.deb"
+        force: yes
 
     - name: Install dive package
       apt:

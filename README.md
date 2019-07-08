@@ -52,6 +52,10 @@ make arduino
 
 make openstack
 
+## simplenote
+
+make simplenote
+
 ## requirements
 
 python : `sudo apt install python`<br>

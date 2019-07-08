@@ -1,0 +1,29 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    simplenote_url: "https://github.com/Automattic/simplenote-electron/releases/download/v1.6.0/Simplenote-linux-1.6.0-amd64.deb"
+    simplenote_tmp: "/tmp/simplenote"
+
+  tasks:
+
+    - name: Creates simplenote temporary directory
+      file:
+        path: "{{ simplenote_tmp }}"
+        state: directory
+        
+    - name: Download simplenote
+      get_url:
+        url: "{{ simplenote_url }}"
+        dest: "{{ simplenote_tmp }}/simplenote.deb"
+        force: yes
+
+    - name: Install simplenote package
+      apt:
+        deb: "{{ simplenote_tmp }}/simplenote.deb"
+
+    - name: Remove simplenote temporary directory
+      file:
+        path: "{{ simplenote_tmp }}"
+        state: absent
