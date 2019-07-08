@@ -10,6 +10,12 @@
           - unzip
         state: present
 
+    - name: install dependencies (pip)
+      become: yes
+      pip:
+        name:
+          - jmespath
+
     - name: get latest terraform version id
       uri:
         url: 'https://checkpoint-api.hashicorp.com/v1/check/terraform'
