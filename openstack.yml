@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: install client
+      become: yes
+      pip:
+        name:
+          - python-openstackclient
+

@@ -1,0 +1,45 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    arduino_version: "1.8.9"
+    arduino_url: "https://downloads.arduino.cc/arduino-{{ arduino_version }}-linux64.tar.xz"
+    arduino_tmp: "/tmp/arduino"
+
+  tasks:
+
+    - name: Install aptitude (apt)
+      apt:
+        name: aptitude 
+
+    - name: install tar (apt)
+      apt:
+        name: ['tar',
+              'xz-utils']
+        state: present
+
+    - name: Creates arduino temporary directory
+      file:
+        path: "{{ arduino_tmp }}"
+        state: directory
+
+    - name: Download arduino
+      get_url:
+        url: "{{ arduino_url }}"
+        dest: "{{ arduino_tmp }}/arduino.tar.xz"
+        force: yes
+
+    - name: Unarchive a file that needs to be downloaded (added in 2.0)
+      unarchive:
+        src: "{{ arduino_tmp }}/arduino.tar.xz"
+        dest: /opt
+        remote_src: no
+
+    - name: Install arduino IDE
+      shell: "/opt/arduino-{{ arduino_version }}/install.sh"
+
+    - name: Remove arduino temporary directory
+      file:
+        path: "{{ arduino_tmp }}"
+        state: absent

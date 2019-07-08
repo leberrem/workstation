@@ -44,6 +44,14 @@ make hyper
 
 make dive
 
+## arduino
+
+make arduino
+
+## openstack
+
+make openstack
+
 ## requirements
 
 python : `sudo apt install python`<br>
