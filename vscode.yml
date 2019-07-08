@@ -39,5 +39,6 @@
       with_items: 
         - ms-azuretools.vscode-docker
         - vscoss.vscode-ansible
+        - mauve.terraform
 
         
