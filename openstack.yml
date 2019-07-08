@@ -3,9 +3,10 @@
 
   tasks:
 
-    - name: install client
+    - name: install client with pip
       become: yes
       pip:
         name:
           - python-openstackclient
+          - python-novaclient
 
