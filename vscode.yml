@@ -40,5 +40,6 @@
         - ms-azuretools.vscode-docker
         - vscoss.vscode-ansible
         - mauve.terraform
+        - rupisaini.vscode-ansible-linter
 
         
