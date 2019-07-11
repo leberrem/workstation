@@ -41,5 +41,6 @@
         - vscoss.vscode-ansible
         - mauve.terraform
         - rupisaini.vscode-ansible-linter
+        - samuelcolvin.jinjahtml
 
         
