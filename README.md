@@ -56,6 +56,10 @@ make openstack
 
 make simplenote
 
+## typora
+
+make typora
+
 ## touchpad gestures
 
 make gestures

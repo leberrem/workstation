@@ -1,0 +1,24 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: install key (apt)
+      become: yes
+      apt_key:
+        url: 'https://typora.io/linux/public-key.asc'
+        state: present
+
+    - name: install typora repo (apt)
+      become: yes
+      apt_repository:
+        repo: deb https://typora.io/linux ./
+        filename: typora
+        state: present
+
+    - name: install Typora (apt)
+      become: yes
+      apt:
+        name: typora
+        state: present

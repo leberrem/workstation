@@ -55,5 +55,8 @@ openstack:
 simplenote:
 	ansible-playbook simplenote.yml
 
+typora:
+	ansible-playbook typora.yml
+
 gestures:
 	ansible-playbook gestures.yml
