@@ -2,8 +2,8 @@
   connection: local
 
   vars:
-    gesture_url: http://github.com/bulletmark/libinput-gestures
-    gesture_tmp: /tmp/gesture
+    gestures_url: http://github.com/bulletmark/libinput-gestures
+    gestures_tmp: /tmp/gestures
 
   tasks:
 
@@ -22,28 +22,28 @@
         name: ["xdotool", "wmctrl", "libinput-tools"]
         state: present
 
-    - name: Creates gesture temporary directory
+    - name: Creates gestures temporary directory
       become: yes
       file:
-        path: "{{ gesture_tmp }}"
+        path: "{{ gestures_tmp }}"
         state: directory
 
-    - name: Clone gesture project
+    - name: Clone gestures project
       become: yes
       git:
-        repo: "{{ gesture_url }}"
-        dest: "{{ gesture_tmp }}"
+        repo: "{{ gestures_url }}"
+        dest: "{{ gestures_tmp }}"
 
     - name: Install gestures
       become: yes
       command: ./libinput-gestures-setup install
       args:
-        chdir: "{{ gesture_tmp }}"
+        chdir: "{{ gestures_tmp }}"
 
-    - name: Remove gesture temporary directory
+    - name: Remove gestures temporary directory
       become: yes
       file:
-        path: "{{ gesture_tmp }}"
+        path: "{{ gestures_tmp }}"
         state: absent
 
     - name: Creates configuration directory
@@ -58,10 +58,10 @@
         src: templates/libinput-gestures.j2
         dest: "/home/{{ whoami_output.stdout }}/.config/libinput-gestures.conf"
 
-    - name: apply gesture configuration
+    - name: apply gestures configuration
       become: false
       command : libinput-gestures-setup restart
 
-    - name: autostart gesture 
+    - name: autostart gestures 
       become: false
       command : libinput-gestures-setup autostart

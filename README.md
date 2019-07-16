@@ -56,9 +56,9 @@ make openstack
 
 make simplenote
 
-## gesture for touchpad
+## touchpad gestures
 
-make gesture
+make gestures
 
 ## requirements
 
