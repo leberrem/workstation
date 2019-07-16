@@ -1,0 +1,68 @@
+- hosts: localhost
+  connection: local
+
+  vars:
+    virtualbox_tmp: /tmp/virtualbox
+
+  tasks:
+
+    - name: get the username
+      become: false
+      command: whoami
+      register: whoami_output
+
+    - name: install key (apt)
+      become: yes
+      apt_key:
+        url: 'http://download.virtualbox.org/virtualbox/debian/oracle_vbox_2016.asc'
+        state: present
+
+    - name: install VS Code repo (apt)
+      become: yes
+      apt_repository:
+        repo: deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic contrib
+        filename: virtualbox
+        state: present
+
+    - name: install virtualbox (apt)
+      become: yes
+      apt:
+        name: ["virtualbox-6.0"]
+        state: present    
+
+    - name: add user to group input
+      become: yes
+      command: "gpasswd -a {{ whoami_output.stdout }} vboxusers" 
+
+    - name: Authorize virtual to use all USB
+      become: yes
+      shell: |
+        echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf
+        sysctl -p
+
+    - name: Récupération de la version de virtualbox
+      become: yes
+      shell: |
+        VBoxManage --version | cut -dr -f1 | cut -d'_' -f1 | tail -1
+      register: version_output
+
+    - name: Creates virtualbox extension temporary directory
+      file:
+        path: "{{ virtualbox_tmp }}"
+        state: directory
+        
+    - name: Download virtualbox extension
+      get_url:
+        url: "http://download.virtualbox.org/virtualbox/{{ version_output.stdout }}/Oracle_VM_VirtualBox_Extension_Pack-{{ version_output.stdout }}.vbox-extpack"
+        dest: "{{ virtualbox_tmp }}/Oracle_VM_VirtualBox_Extension_Pack-{{ version_output.stdout }}.vbox-extpack"
+        force: yes
+
+    - name: Install virtualbox extension
+      become: yes
+      shell: |
+        VBoxManage extpack install --replace {{ virtualbox_tmp }}/Oracle_VM_VirtualBox_Extension_Pack-{{ version_output.stdout }}.vbox-extpack | echo "y"
+
+    - name: Remove virtualbox extension temporary directory
+      file:
+        path: "{{ virtualbox_tmp }}"
+        state: absent

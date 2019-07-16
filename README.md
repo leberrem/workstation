@@ -60,6 +60,10 @@ make simplenote
 
 make typora
 
+## virtualbox
+
+make virtualbox
+
 ## touchpad gestures
 
 make gestures

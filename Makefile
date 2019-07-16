@@ -60,3 +60,6 @@ typora:
 
 gestures:
 	ansible-playbook gestures.yml
+
+virtualbox:
+	ansible-playbook virtualbox.yml
