@@ -61,3 +61,7 @@
     - name: apply gesture configuration
       become: false
       command : libinput-gestures-setup restart
+
+    - name: autostart gesture 
+      become: false
+      command : libinput-gestures-setup autostart
