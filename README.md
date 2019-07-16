@@ -56,6 +56,10 @@ make openstack
 
 make simplenote
 
+## gesture for touchpad
+
+make gesture
+
 ## requirements
 
 python : `sudo apt install python`<br>

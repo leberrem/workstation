@@ -1,0 +1,63 @@
+- hosts: localhost
+  connection: local
+
+  vars:
+    gesture_url: http://github.com/bulletmark/libinput-gestures
+    gesture_tmp: /tmp/gesture
+
+  tasks:
+
+    - name: get the username
+      become: false
+      command: whoami
+      register: whoami_output
+
+    - name: add user to group input
+      become: yes
+      command: "gpasswd -a {{ whoami_output.stdout }} input"
+
+    - name: install dependencies
+      become: yes
+      apt:
+        name: ["xdotool", "wmctrl", "libinput-tools"]
+        state: present
+
+    - name: Creates gesture temporary directory
+      become: yes
+      file:
+        path: "{{ gesture_tmp }}"
+        state: directory
+
+    - name: Clone gesture project
+      become: yes
+      git:
+        repo: "{{ gesture_url }}"
+        dest: "{{ gesture_tmp }}"
+
+    - name: Install gestures
+      become: yes
+      command: ./libinput-gestures-setup install
+      args:
+        chdir: "{{ gesture_tmp }}"
+
+    - name: Remove gesture temporary directory
+      become: yes
+      file:
+        path: "{{ gesture_tmp }}"
+        state: absent
+
+    - name: Creates configuration directory
+      become: false
+      file:
+        path: "/home/{{ whoami_output.stdout }}/.config"
+        state: directory
+
+    - name: create config file
+      become: false
+      template: 
+        src: templates/libinput-gestures.j2
+        dest: "/home/{{ whoami_output.stdout }}/.config/libinput-gestures.conf"
+
+    - name: apply gesture configuration
+      become: false
+      command : libinput-gestures-setup restart
