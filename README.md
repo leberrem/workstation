@@ -1,4 +1,4 @@
-# Install tools on ubuntu workstation
+# Install tools on ubuntu workstation 18.04
 
 ## Download ansible
 
@@ -63,6 +63,10 @@ make typora
 ## virtualbox
 
 make virtualbox
+
+## openboard
+
+make openboard
 
 ## touchpad gestures
 

@@ -63,3 +63,6 @@ gestures:
 
 virtualbox:
 	ansible-playbook virtualbox.yml
+
+openboard:
+	ansible-playbook openboard.yml	

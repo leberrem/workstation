@@ -1,0 +1,37 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    openboard_url: https://github.com/OpenBoard-org/OpenBoard/releases/download/v1.5.3-ubuntu18/openboard_ubuntu_18.04_1.5.3_amd64.deb
+    openboard_tmp: /tmp/openboard
+
+  tasks:
+
+    - name: Install prereqs
+      apt: 
+        name: [
+          "libqt5webkit5",
+          "libqt5xml5",
+          "libqt5script5"
+        ]
+
+    - name: Creates openboard temporary directory
+      file:
+        path: "{{ openboard_tmp }}"
+        state: directory
+        
+    - name: Download openboard
+      get_url:
+        url: "{{ openboard_url }}"
+        dest: "{{ openboard_tmp }}/openboard.deb"
+        force: yes
+
+    - name: Install openboard package
+      apt:
+        deb: "{{ openboard_tmp }}/openboard.deb"
+
+    - name: Remove openboard temporary directory
+      file:
+        path: "{{ openboard_tmp }}"
+        state: absent
