@@ -13,4 +13,6 @@
       include_role:
         name: docker
       vars:
-         docker_users: ["{{ username_on_the_host.stdout }}"]
+        docker_users: ["{{ username_on_the_host.stdout }}"]
+        docker_docker_conf:
+          - ""
