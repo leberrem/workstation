@@ -1,4 +1,4 @@
-# Install tools on ubuntu workstation 18.04
+# Install tools on ubuntu workstation 18.04 & Elementary 5
 
 ## Download ansible
 
