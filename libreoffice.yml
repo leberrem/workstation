@@ -11,40 +11,11 @@
 
   tasks:
 
-    - name: Creates libreoffice temporary directory
-      file:
-        path: "{{ libreoffice_tmp }}"
-        state: directory
+    - name: add libreOffice repository
+      apt_repository:
+        repo: ppa:libreoffice/ppa
+
+    - name: Install libreoffice
+      apt:
+        name: [ "libreoffice", "libreoffice-help-fr", "libreoffice-l10n-fr" ]
         
-    - name: Download libreoffice packages
-      get_url:
-        url: "{{ item }}"
-        dest: "{{ libreoffice_tmp }}/{{ item | basename}}"
-        force: yes
-      with_items:
-        - "{{ libreoffice_url }}"
-        - "{{ libreoffice_translate }}"
-        - "{{ libreoffice_help }}"
-
-    - name: Unarchive Terraform archive
-      become: yes
-      unarchive:
-        src: "{{ item }}"
-        dest: "{{ libreoffice_tmp }}"
-        copy: no
-      with_items:
-        - "{{ libreoffice_tmp }}/{{ libreoffice_url | basename }}"
-        - "{{ libreoffice_tmp }}/{{ libreoffice_translate | basename }}"
-        - "{{ libreoffice_tmp }}/{{ libreoffice_help | basename }}"
-
-    - name: Install libreoffice package
-      shell: "{{ item }}"
-      with_items:
-        - "dpkg -i {{ libreoffice_tmp }}/LibreOffice_*_Linux_x86-64_deb/DEBS/*.deb"
-        - "dpkg -i {{ libreoffice_tmp }}/LibreOffice_*_Linux_x86-64_deb_langpack_fr/DEBS/*.deb"
-        - "dpkg -i {{ libreoffice_tmp }}/LibreOffice_*_Linux_x86-64_deb_helppack_fr/DEBS/*.deb"
-
-    - name: Remove libreoffice temporary directory
-      file:
-        path: "{{ libreoffice_tmp }}"
-        state: absent
