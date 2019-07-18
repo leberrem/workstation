@@ -68,6 +68,10 @@ make virtualbox
 
 make openboard
 
+## wine-hq
+
+make winehq
+
 ## touchpad gestures
 
 make gestures

@@ -66,3 +66,6 @@ virtualbox:
 
 openboard:
 	ansible-playbook openboard.yml	
+
+winehq:
+	ansible-playbook winehq.yml

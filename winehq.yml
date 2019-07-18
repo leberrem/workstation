@@ -1,0 +1,23 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: install key (apt)
+      become: yes
+      apt_key:
+        url: 'https://dl.winehq.org/wine-builds/winehq.key'
+        state: present
+
+    - name: install VS Code repo (apt)
+      become: yes
+      apt_repository:
+        repo: deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main
+        filename: winehq
+        state: present
+
+    - name: install VS Code (apt)
+      become: yes
+      apt:
+        name: winehq-stable
+        state: present
