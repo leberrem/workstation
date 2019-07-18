@@ -14,5 +14,16 @@
         name: docker
       vars:
         docker_users: ["{{ username_on_the_host.stdout }}"]
-        docker_docker_conf:
-          - ""
+
+    - name: remove remap configuration
+      file:
+        path: "/etc/docker/daemon.json"
+        state: absent
+    
+    - name: restart docker
+      systemd:
+        state: restarted
+        daemon_reload: yes
+        name: docker   
+
+
