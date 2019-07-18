@@ -69,3 +69,6 @@ openboard:
 
 winehq:
 	ansible-playbook winehq.yml
+
+libreoffice:
+	ansible-playbook libreoffice.yml

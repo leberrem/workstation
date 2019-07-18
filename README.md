@@ -72,6 +72,10 @@ make openboard
 
 make winehq
 
+## libreOffice
+
+make libreoffice
+
 ## touchpad gestures
 
 make gestures

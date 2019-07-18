@@ -1,0 +1,29 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    libreoffice_url: https://github.com/wagoodman/libreoffice/releases/download/v0.7.2/libreoffice_0.7.2_linux_amd64.deb
+    libreoffice_tmp: /tmp/libreoffice
+
+  tasks:
+
+    - name: Creates libreoffice temporary directory
+      file:
+        path: "{{ libreoffice_tmp }}"
+        state: directory
+        
+    - name: Download libreoffice
+      get_url:
+        url: "{{ libreoffice_url }}"
+        dest: "{{ libreoffice_tmp }}/libreoffice.deb"
+        force: yes
+
+    - name: Install libreoffice package
+      apt:
+        deb: "{{ libreoffice_tmp }}/libreoffice.deb"
+
+    - name: Remove libreoffice temporary directory
+      file:
+        path: "{{ libreoffice_tmp }}"
+        state: absent
