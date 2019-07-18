@@ -3,8 +3,11 @@
   become: yes
 
   vars:
-    libreoffice_url: https://github.com/wagoodman/libreoffice/releases/download/v0.7.2/libreoffice_0.7.2_linux_amd64.deb
-    libreoffice_tmp: /tmp/libreoffice
+    libreoffice_version: "6.2.5"
+    libreoffice_url: "https://download.documentfoundation.org/libreoffice/stable/{{ libreoffice_version }}/deb/x86_64/LibreOffice_{{ libreoffice_version }}_Linux_x86-64_deb.tar.gz"
+    libreoffice_translate: "http://download.documentfoundation.org/libreoffice/stable/{{ libreoffice_version }}/deb/x86_64/LibreOffice_{{ libreoffice_version }}_Linux_x86-64_deb_langpack_fr.tar.gz"
+    libreoffice_help: "http://download.documentfoundation.org/libreoffice/stable/{{ libreoffice_version }}/deb/x86_64/LibreOffice_{{ libreoffice_version }}_Linux_x86-64_deb_helppack_fr.tar.gz"
+    libreoffice_tmp: "/tmp/libreoffice"
 
   tasks:
 
@@ -13,15 +16,33 @@
         path: "{{ libreoffice_tmp }}"
         state: directory
         
-    - name: Download libreoffice
+    - name: Download libreoffice packages
       get_url:
-        url: "{{ libreoffice_url }}"
-        dest: "{{ libreoffice_tmp }}/libreoffice.deb"
+        url: "{{ item }}"
+        dest: "{{ libreoffice_tmp }}/{{ item | basename}}"
         force: yes
+      with_items:
+        - "{{ libreoffice_url }}"
+        - "{{ libreoffice_translate }}"
+        - "{{ libreoffice_help }}"
+
+    - name: Unarchive Terraform archive
+      become: yes
+      unarchive:
+        src: "{{ item }}"
+        dest: "{{ libreoffice_tmp }}"
+        copy: no
+      with_items:
+        - "{{ libreoffice_tmp }}/{{ libreoffice_url | basename }}"
+        - "{{ libreoffice_tmp }}/{{ libreoffice_translate | basename }}"
+        - "{{ libreoffice_tmp }}/{{ libreoffice_help | basename }}"
 
     - name: Install libreoffice package
-      apt:
-        deb: "{{ libreoffice_tmp }}/libreoffice.deb"
+      shell: "{{ item }}"
+      with_items:
+        - "dpkg -i {{ libreoffice_tmp }}/LibreOffice_*_Linux_x86-64_deb/DEBS/*.deb"
+        - "dpkg -i {{ libreoffice_tmp }}/LibreOffice_*_Linux_x86-64_deb_langpack_fr/DEBS/*.deb"
+        - "dpkg -i {{ libreoffice_tmp }}/LibreOffice_*_Linux_x86-64_deb_helppack_fr/DEBS/*.deb"
 
     - name: Remove libreoffice temporary directory
       file:
