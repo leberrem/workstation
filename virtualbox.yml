@@ -30,9 +30,13 @@
         name: ["virtualbox-6.0"]
         state: present    
 
-    - name: add user to group input
+    - name: add user to group vboxusers & disk
       become: yes
-      command: "gpasswd -a {{ whoami_output.stdout }} vboxusers" 
+      command: "{{ item }}" 
+      with_items:
+        - "usermod -a -G disk {{ whoami_output.stdout }}"
+        - "usermod -a -G vboxusers {{ whoami_output.stdout }}"
+
 
     - name: Authorize virtual to use all USB
       become: yes
