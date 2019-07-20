@@ -76,6 +76,10 @@ make winehq
 
 make libreoffice
 
+## etcher
+
+make etcher
+
 ## touchpad gestures
 
 make gestures

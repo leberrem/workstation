@@ -70,5 +70,8 @@ openboard:
 winehq:
 	ansible-playbook winehq.yml
 
+etcher:
+	ansible-playbook etcher.yml
+
 libreoffice:
 	ansible-playbook libreoffice.yml

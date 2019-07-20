@@ -1,0 +1,22 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: install key (apt)
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 379CE192D401AB61
+
+    - name: install etcher repo (apt)
+      apt_repository:
+        repo: deb https://deb.etcher.io stable etcher
+        filename: etcher
+        state: present
+
+    - name: install etcher (apt)
+      apt:
+        name: balena-etcher-electron
+        state: present
+

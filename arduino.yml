@@ -30,7 +30,7 @@
         dest: "{{ arduino_tmp }}/arduino.tar.xz"
         force: yes
 
-    - name: Unarchive a file that needs to be downloaded (added in 2.0)
+    - name: Extract arduino archive
       unarchive:
         src: "{{ arduino_tmp }}/arduino.tar.xz"
         dest: /opt
