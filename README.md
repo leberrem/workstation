@@ -6,19 +6,19 @@
 * Meld : `make meld`
 * Postman : `make postman`
 * Dive : `make dive`
-* arduino: `make arduino`
+* Arduino IDE : `make arduino`
 
 ## Infrastructure tools
 
 * Terraform : `make terraform`
-* AWSCli : `make awscli`
+* AwsCli : `make awscli`
 * Docker : `make docker`
 * Kubectl : `make kubectl`
 * Helm : `make helm`
 * OpenStack : `make openstack`
-* virtualbox : `make virtualbox`
+* Virtualbox : `make virtualbox`
 
-## Social
+## Social tools
 
 * Slack : `make slack`
 * Discord : `make discord`
