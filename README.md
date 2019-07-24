@@ -32,7 +32,7 @@
 * Typora : `make typora`
 * Openboard : `make openboard`
 * WineHQ : `make winehq`
-* libreOffice : `make libreoffice`
+* LibreOffice : `make libreoffice`
 * Etcher : `make etcher`
 * Gimp : `make gimp`
 * Touchpad MAC gestures : `make gestures`
