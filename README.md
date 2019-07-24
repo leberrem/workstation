@@ -1,100 +1,57 @@
 # Install tools on ubuntu workstation 18.04 & Elementary 5
 
-## Download ansible
+## Developments tools
 
-make requirements
+* Visual Studio Code : `make vscode`
+* Meld : `make meld`
+* Postman : `make postman`
+* Dive : `make dive`
+* arduino: `make arduino`
 
-## VSCode
+## Infrastructure tools
 
-make vscode
+* Terraform : `make terraform`
+* AWSCli : `make awscli`
+* Docker : `make docker`
+* Kubectl : `make kubectl`
+* Helm : `make helm`
+* OpenStack : `make openstack`
+* virtualbox : `make virtualbox`
 
-## Terminator
+## Social
 
-make terminator
+* Slack : `make slack`
+* Discord : `make discord`
 
-## Terraform
+## Others tools
 
-make terraform
+* PS1 : `make ps1`
+* Terminator : `make terminator`
+* Hyper : `make hyper`
+* Simplenote : `make simplenote`
+* Typora : `make typora`
+* Openboard : `make openboard`
+* WineHQ : `make winehq`
+* libreOffice : `make libreoffice`
+* Etcher : `make etcher`
+* Gimp : `make gimp`
+* Touchpad MAC gestures : `make gestures`
 
-## awscli
+## Requirements
 
-make awscli
+### Package
 
-## docker & docker-compose
+* python : `sudo apt install python`
+* pip : `sudo apt install python-pip`
+* ansible : `sudo pip install ansible`
 
-make docker
+### Configuration : sudo without password
 
-## helm
-
-make helm
-
-## kubectl
-
-make kubectl
-
-## postman
-
-make postman
-
-## hyper
-
-make hyper
-
-## dive
-
-make dive
-
-## arduino
-
-make arduino
-
-## openstack
-
-make openstack
-
-## simplenote
-
-make simplenote
-
-## typora
-
-make typora
-
-## virtualbox
-
-make virtualbox
-
-## openboard
-
-make openboard
-
-## wine-hq
-
-make winehq
-
-## libreOffice
-
-make libreoffice
-
-## etcher
-
-make etcher
-
-## gimp
-
-make gimp
-
-## touchpad gestures
-
-make gestures
-
-## requirements
-
-python : `sudo apt install python`<br>
-pip : `sudo apt install python-pip`<br>
-ansible : `sudo pip install ansible`<br>
-
-Sudo without password : `sudo visudo`
+`sudo visudo`
 ```
 <$USER>   ALL=(ALL) NOPASSWD:ALL
 ```
+
+## Download ansible roles
+
+`make requirements`
