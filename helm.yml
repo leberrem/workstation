@@ -12,7 +12,7 @@
       file:
         path: "{{ helm_tmp }}"
         state: directory
-        
+
     - name: Download helm
       get_url:
         url: "{{ helm_url }}"

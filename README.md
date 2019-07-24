@@ -80,6 +80,10 @@ make libreoffice
 
 make etcher
 
+## gimp
+
+make gimp
+
 ## touchpad gestures
 
 make gestures

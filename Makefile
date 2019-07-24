@@ -65,13 +65,16 @@ virtualbox:
 	ansible-playbook virtualbox.yml
 
 openboard:
-	ansible-playbook openboard.yml	
+	ansible-playbook openboard.yml
 
 winehq:
 	ansible-playbook winehq.yml
 
 etcher:
 	ansible-playbook etcher.yml
+
+gimp:
+	ansible-playbook gimp.yml
 
 libreoffice:
 	ansible-playbook libreoffice.yml
