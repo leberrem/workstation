@@ -81,3 +81,6 @@ gimp:
 
 libreoffice:
 	ansible-playbook libreoffice.yml
+
+vagrant:
+	ansible-playbook vagrant.yml

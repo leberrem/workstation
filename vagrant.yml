@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: install vagrant (apt)
+      become: yes
+      apt:
+        name: vagrant
+        state: present
+
