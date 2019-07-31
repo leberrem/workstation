@@ -19,7 +19,7 @@
       apt:
         name: kubectl
         state: present
-        
+
     - name: install bash-completion (apt)
       apt:
         name: bash-completion

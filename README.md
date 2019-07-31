@@ -14,6 +14,7 @@
 * AwsCli : `make awscli`
 * Docker : `make docker`
 * Kubectl : `make kubectl`
+* minikube : `make minikube`
 * Helm : `make helm`
 * OpenStack : `make openstack`
 * Virtualbox : `make virtualbox`

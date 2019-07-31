@@ -1,5 +1,5 @@
 requirements:
-	ansible-galaxy install -f -r requirements.yml 
+	ansible-galaxy install -f -r requirements.yml
 
 certificate:
 	ansible-playbook certificate.yml --extra-vars "ansible_os_family=Debian"
@@ -17,7 +17,7 @@ terminator:
 	ansible-playbook terminator.yml
 
 hyper:
-	ansible-playbook hyper.yml	
+	ansible-playbook hyper.yml
 
 terraform:
 	ansible-playbook terraform.yml
@@ -26,10 +26,13 @@ postman:
 	ansible-playbook postman.yml
 
 awscli:
-	ansible-playbook awscli.yml	
+	ansible-playbook awscli.yml
 
 kubectl:
-	ansible-playbook kubectl.yml	
+	ansible-playbook kubectl.yml
+
+minikube:
+	ansible-playbook minikube.yml
 
 helm:
 	ansible-playbook helm.yml
