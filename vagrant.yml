@@ -1,11 +1,32 @@
 - hosts: localhost
   connection: local
+  become: yes
+
+  vars:
+    vagrant_url: https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_linux_amd64.zip
+    vagrant_tmp: /tmp/vagrant
 
   tasks:
 
-    - name: install vagrant (apt)
-      become: yes
-      apt:
-        name: vagrant
-        state: present
+    - name: Creates vagrant temporary directory
+      file:
+        path: "{{ vagrant_tmp }}"
+        state: directory
 
+    - name: Download vagrant
+      get_url:
+        url: "{{ vagrant_url }}"
+        dest: "{{ vagrant_tmp }}/vagrant.zip"
+        force: yes
+
+    - name: Unarchive Terraform archive
+      become: yes
+      unarchive:
+        src: "{{ vagrant_tmp }}/vagrant.zip"
+        dest: /usr/bin/
+        copy: no
+
+    - name: Remove vagrant temporary directory
+      file:
+        path: "{{ vagrant_tmp }}"
+        state: absent
