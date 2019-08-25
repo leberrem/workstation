@@ -18,4 +18,3 @@
     - name: Install libreoffice
       apt:
         name: [ "libreoffice", "libreoffice-help-fr", "libreoffice-l10n-fr" ]
-        

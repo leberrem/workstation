@@ -12,7 +12,7 @@
       file:
         path: "{{ dive_tmp }}"
         state: directory
-        
+
     - name: Download dive
       get_url:
         url: "{{ dive_url }}"

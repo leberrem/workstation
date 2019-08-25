@@ -19,5 +19,3 @@
       template:
         src: templates/terminator.j2
         dest: ~/.config/terminator/config
-
-        

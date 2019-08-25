@@ -12,7 +12,7 @@
       file:
         path: "{{ slack_tmp }}"
         state: directory
-        
+
     - name: Download slack
       get_url:
         url: "{{ slack_url }}"

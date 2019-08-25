@@ -11,7 +11,8 @@
 ## Infrastructure tools
 
 * Terraform : `make terraform`
-* AwsCli : `make awscli`
+* AWS-cli : `make awscli`
+* AZURE-cli : `make azure`
 * Docker : `make docker`
 * Kubectl : `make kubectl`
 * Minikube : `make minikube`

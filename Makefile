@@ -84,3 +84,6 @@ libreoffice:
 
 vagrant:
 	ansible-playbook vagrant.yml
+
+azure:
+	ansible-playbook azure.yml
