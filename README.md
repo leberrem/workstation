@@ -29,6 +29,7 @@
 ## Others tools
 
 * PS1 : `make ps1`
+* Welcome message : `make welcome`
 * Terminator : `make terminator`
 * Hyper : `make hyper`
 * Simplenote : `make simplenote`

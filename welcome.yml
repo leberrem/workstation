@@ -1,0 +1,17 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: install landscape
+      become: yes
+      apt:
+        name:
+          - landscape-common
+        state: present
+
+    - name: add welcome message
+      blockinfile:
+        dest: ~/.bashrc
+        block: "{{ lookup('template', 'templates/welcome.j2') }}"
+        marker: "# {mark} ANSIBLE MANAGED BLOCK - WELCOME"

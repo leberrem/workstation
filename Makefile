@@ -7,6 +7,9 @@ certificate:
 ps1:
 	ansible-playbook PS1.yml
 
+welcome:
+	ansible-playbook welcome.yml
+
 vscode:
 	ansible-playbook vscode.yml
 
