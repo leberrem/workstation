@@ -9,7 +9,7 @@
   tasks:
 
     - name: Install prereqs
-      apt: 
+      apt:
         name: [
           "libqt5webkit5",
           "libqt5xml5",
@@ -20,7 +20,7 @@
       file:
         path: "{{ openboard_tmp }}"
         state: directory
-        
+
     - name: Download openboard
       get_url:
         url: "{{ openboard_url }}"

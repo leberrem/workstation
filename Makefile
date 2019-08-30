@@ -90,3 +90,6 @@ vagrant:
 
 azure:
 	ansible-playbook azure.yml
+
+cura:
+	ansible-playbook cura.yml

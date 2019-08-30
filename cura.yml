@@ -1,0 +1,37 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: Creates application directory
+      become: yes
+      file:
+        path: "/opt/cura"
+        state: directory
+
+    - name: Download application
+      become: yes
+      get_url:
+        url: 'https://software.ultimaker.com/cura/Ultimaker_Cura-4.2.1.AppImage'
+        dest: '/opt/cura/cura.AppImage'
+        mode: 775
+        force: yes
+
+    - name: Download logo
+      become: yes
+      get_url:
+        url: 'https://upload.wikimedia.org/wikipedia/en/9/9b/Logo_for_Cura_Software.png'
+        dest: '/opt/cura/icon.png'
+        force: yes
+
+    - name: Create symbolic link
+      become: yes
+      file:
+        src: "/opt/cura/cura.AppImage"
+        dest: "/usr/bin/cura"
+        state: link
+
+    - name: create shortcut
+      template:
+        src: templates/cura.j2
+        dest: ~/.local/share/applications/cura.desktop

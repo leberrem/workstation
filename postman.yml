@@ -16,7 +16,7 @@
         dest: /opt
         copy: no
 
-    - name: Create symbolic link 
+    - name: Create symbolic link
       become: yes
       file:
         src: "/opt/Postman/Postman"

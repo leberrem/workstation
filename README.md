@@ -40,6 +40,7 @@
 * Etcher : `make etcher`
 * Gimp : `make gimp`
 * Touchpad MAC gestures : `make gestures`
+* CURA : `make cura`
 
 ## Requirements
 
