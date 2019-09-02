@@ -99,3 +99,6 @@ teams:
 
 robo3t:
 	ansible-playbook robo3t.yml
+
+thunderbird:
+	ansible-playbook thunderbird.yml

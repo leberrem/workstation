@@ -1,0 +1,43 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    thunderbird_version: "68.0"
+    thunderbird_url: "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/{{ thunderbird_version }}/linux-x86_64/fr/thunderbird-{{ thunderbird_version }}.tar.bz2"
+    thunderbird_tmp: "/tmp/thunderbird"
+
+  tasks:
+
+    - name: Creates thunderbird temporary directory
+      file:
+        path: "{{ thunderbird_tmp }}"
+        state: directory
+
+    - name: Download thunderbird
+      get_url:
+        url: "{{ thunderbird_url }}"
+        dest: "{{ thunderbird_tmp }}/thunderbird.tar.bz2"
+        force: yes
+
+    - name: Extract thunderbird archive
+      unarchive:
+        src: "{{ thunderbird_tmp }}/thunderbird.tar.bz2"
+        dest: /opt
+        remote_src: no
+
+    - name: Copy icon image
+      copy:
+        src: files/thunderbird.png
+        dest: /opt/thunderbird/icon.png
+
+    - name: create shortcut
+      become: no
+      template:
+        src: templates/thunderbird.j2
+        dest: ~/.local/share/applications/thunderbird.desktop
+
+    - name: Remove thunderbird temporary directory
+      file:
+        path: "{{ thunderbird_tmp }}"
+        state: absent
