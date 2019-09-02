@@ -1,0 +1,29 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    teams_url: "https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v0.7.0/teams-for-linux_0.7.0_amd64.deb"
+    teams_tmp: "/tmp/teams"
+
+  tasks:
+
+    - name: Creates teams temporary directory
+      file:
+        path: "{{ teams_tmp }}"
+        state: directory
+
+    - name: Download teams
+      get_url:
+        url: "{{ teams_url }}"
+        dest: "{{ teams_tmp }}/teams.deb"
+        force: yes
+
+    - name: Install teams package
+      apt:
+        deb: "{{ teams_tmp }}/teams.deb"
+
+    - name: Remove teams temporary directory
+      file:
+        path: "{{ teams_tmp }}"
+        state: absent

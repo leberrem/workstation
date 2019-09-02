@@ -12,7 +12,7 @@
       file:
         path: "{{ simplenote_tmp }}"
         state: directory
-        
+
     - name: Download simplenote
       get_url:
         url: "{{ simplenote_url }}"

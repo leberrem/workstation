@@ -27,7 +27,7 @@
     - set_fact:
         terraform_version: "{{ release.json | json_query('current_version') }}"
 
-    - debug: 
+    - debug:
         msg: "terraform latest version : {{ terraform_version }}"
 
     - name: Download Terraform archive

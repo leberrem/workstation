@@ -93,3 +93,6 @@ azure:
 
 cura:
 	ansible-playbook cura.yml
+
+teams:
+	ansible-playbook teams.yml

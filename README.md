@@ -25,6 +25,7 @@
 
 * Slack : `make slack`
 * Discord : `make discord`
+* Teams : `make teams`
 
 ## Others tools
 
