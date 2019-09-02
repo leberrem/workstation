@@ -17,12 +17,10 @@
         mode: 775
         force: yes
 
-    - name: Download logo
-      become: yes
-      get_url:
-        url: 'https://upload.wikimedia.org/wikipedia/en/9/9b/Logo_for_Cura_Software.png'
-        dest: '/opt/cura/icon.png'
-        force: yes
+    - name: Copy icon image
+      copy:
+        src: files/cura.png
+        dest: /opt/cura/icon.png
 
     - name: Create symbolic link
       become: yes
