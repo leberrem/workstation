@@ -38,7 +38,7 @@
 * Typora : `make typora`
 * Openboard : `make openboard`
 * WineHQ : `make winehq`
-* LibreOffice : `make libreoffice`*
+* LibreOffice : `make libreoffice`
 * Thunderbird : `make thunderbird`
 * Etcher : `make etcher`
 * Gimp : `make gimp`
