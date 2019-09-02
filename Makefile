@@ -96,3 +96,6 @@ cura:
 
 teams:
 	ansible-playbook teams.yml
+
+robo3t:
+	ansible-playbook robo3t.yml

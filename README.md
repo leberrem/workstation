@@ -7,6 +7,7 @@
 * Postman : `make postman`
 * Dive : `make dive`
 * Arduino IDE : `make arduino`
+* Robo3T : `make robo3t`
 
 ## Infrastructure tools
 
