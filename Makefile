@@ -102,3 +102,6 @@ robo3t:
 
 thunderbird:
 	ansible-playbook thunderbird.yml
+
+remmina:
+	ansible-playbook remmina.yml

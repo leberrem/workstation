@@ -1,0 +1,13 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: add remmina repository
+      apt_repository:
+        repo: ppa:remmina-ppa-team/remmina-next
+
+    - name: Install remmina and plugin
+      apt:
+        name: [ "remmina","remmina-plugin-rdp","remmina-plugin-secret","remmina-plugin-spice" ]

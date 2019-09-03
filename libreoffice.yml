@@ -2,13 +2,6 @@
   connection: local
   become: yes
 
-  vars:
-    libreoffice_version: "6.2.5"
-    libreoffice_url: "https://download.documentfoundation.org/libreoffice/stable/{{ libreoffice_version }}/deb/x86_64/LibreOffice_{{ libreoffice_version }}_Linux_x86-64_deb.tar.gz"
-    libreoffice_translate: "http://download.documentfoundation.org/libreoffice/stable/{{ libreoffice_version }}/deb/x86_64/LibreOffice_{{ libreoffice_version }}_Linux_x86-64_deb_langpack_fr.tar.gz"
-    libreoffice_help: "http://download.documentfoundation.org/libreoffice/stable/{{ libreoffice_version }}/deb/x86_64/LibreOffice_{{ libreoffice_version }}_Linux_x86-64_deb_helppack_fr.tar.gz"
-    libreoffice_tmp: "/tmp/libreoffice"
-
   tasks:
 
     - name: add libreOffice repository

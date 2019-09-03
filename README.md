@@ -44,6 +44,7 @@
 * Gimp : `make gimp`
 * Touchpad MAC gestures : `make gestures`
 * CURA : `make cura`
+* Remmina : `make remmina`
 
 ## Requirements
 
