@@ -105,3 +105,6 @@ thunderbird:
 
 remmina:
 	ansible-playbook remmina.yml
+
+sqldeveloper:
+	ansible-playbook sqldeveloper.yml

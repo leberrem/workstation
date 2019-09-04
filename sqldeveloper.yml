@@ -1,0 +1,44 @@
+- hosts: localhost
+  connection: local
+
+  vars:
+    sqldeveloper_url: "https://download.oracle.com/otn/java/sqldeveloper/sqldeveloper-19.2.0.206.2117-no-jre.zip"
+    sqldeveloper_tmp: "/tmp/sqldeveloper"
+
+  tasks:
+
+    - name: install dependencies
+      become: yes
+      apt:
+        name:
+          - openjdk-11-jre
+        state: present
+
+    - name: Create sqldeveloper temporary directory
+      file:
+        path: "{{ sqldeveloper_tmp }}"
+        state: directory
+
+    - name: Download sqldeveloper
+      get_url:
+        url: '{{ sqldeveloper_url }}'
+        dest: '{{ sqldeveloper_tmp }}/sqldeveloper.zip'
+        force: yes
+
+    - name: extract sqldeveloper archive
+      become: yes
+      unarchive:
+        src: '{{ sqldeveloper_tmp }}/sqldeveloper.zip'
+        dest: /opt
+        copy: no
+
+    - name: create shortcut
+      become: no
+      template:
+        src: templates/sqldeveloper.j2
+        dest: ~/.local/share/applications/sqldeveloper.desktop
+
+    - name: Remove sqldeveloper temporary directory
+      file:
+        path: "{{ sqldeveloper_tmp }}"
+        state: absent

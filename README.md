@@ -8,6 +8,7 @@
 * Dive : `make dive`
 * Arduino IDE : `make arduino`
 * Robo3T : `make robo3t`
+* SQLDeveloper : `make sqldeveloper`
 
 ## Infrastructure tools
 
