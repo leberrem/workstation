@@ -9,6 +9,11 @@
 
   tasks:
 
+    - name: install cifs-utils
+      apt:
+        name: cifs-utils
+        state: present
+
     - name: install powershell Microsoft repository
       apt:
         deb: https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
