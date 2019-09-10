@@ -2,6 +2,11 @@
   connection: local
   become: yes
 
+  vars :
+    azure_tmp: /tmp/azure
+    azcopy_name: azcopy_linux_amd64_10.2.1
+    azcopy_url: https://azcopyvnext.azureedge.net/release20190703/{{ azcopy_name }}.tar.gz
+
   tasks:
 
     - name: install powershell Microsoft repository
@@ -32,4 +37,33 @@
         name: azure-cli
         state: present
 
+    - name: Creates azure temporary directory
+      become: yes
+      file:
+        path: "{{ azure_tmp }}"
+        state: directory
 
+    - name: download azcopy
+      get_url:
+        url: "{{ azcopy_url }}"
+        dest: "{{ azure_tmp }}/azcopy.tar.gz"
+        force: yes
+
+    - name: extract azcopy
+      unarchive:
+        src: '{{ azure_tmp }}/azcopy.tar.gz'
+        dest: /opt
+        copy: no
+
+    - name: Create symbolic link
+      become: yes
+      file:
+        src: "/opt/{{ azcopy_name }}/azcopy"
+        dest: "/usr/bin/azcopy"
+        state: link
+
+    - name: Remove azure temporary directory
+      become: yes
+      file:
+        path: "{{ azure_tmp }}"
+        state: absent
