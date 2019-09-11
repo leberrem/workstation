@@ -7,11 +7,11 @@
       become: yes
       apt:
         name:
-          - landscape-common
+          - neofetch
         state: present
 
     - name: add welcome message
       blockinfile:
         dest: ~/.bashrc
-        block: "{{ lookup('template', 'templates/welcome.j2') }}"
+        block: "/usr/bin/neofetch"
         marker: "# {mark} ANSIBLE MANAGED BLOCK - WELCOME"

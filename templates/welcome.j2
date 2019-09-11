@@ -1,7 +1,0 @@
-DISTRIB_DESCRIPTION=$(lsb_release -s -d)
-UPSTREAM_DISTRIB_DESCRIPTION=$(grep DISTRIB_DESCRIPTION /etc/upstream-release/lsb-release  | cut -d= -f2- | tr -d \")
-printf "Welcome to %s (%s %s %s)\n" "$DISTRIB_DESCRIPTION" "$(uname -o)" "$(uname -r)" "$(uname -m)"
-printf "Built on %s\n" "$UPSTREAM_DISTRIB_DESCRIPTION"
-printf "\n"
-/usr/bin/landscape-sysinfo
-printf "\n"
