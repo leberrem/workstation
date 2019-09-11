@@ -36,12 +36,15 @@
 
     - name: install VS Code extensions
       shell: code --install-extension {{ item }} --force
-      with_items: 
+      with_items:
         - ms-azuretools.vscode-docker
         - vscoss.vscode-ansible
-        - mauve.terraform
         - rupisaini.vscode-ansible-linter
+        - mauve.terraform
         - samuelcolvin.jinjahtml
+        - ms-vscode.powershell
+        - DavidAnson.vscode-markdownlint
+        - Mikael.Angular-BeastCode
 
 # TODO configuration
 # {
