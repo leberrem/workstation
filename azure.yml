@@ -27,6 +27,12 @@
     - name: install powershell azure module
       command: "pwsh -noni -c 'Install-Module -Force -Name Az -AllowClobber'"
 
+    - name: install powershell MsOnline module
+      command: "pwsh -noni -c 'Install-Module -Force -Name MsOnline -AllowClobber'"
+
+    - name: import powershell MsOnline module
+      command: "pwsh -noni -c 'Import-Module MSonline'"
+
     - name: install microsoft azure-cli key
       apt_key:
         url: 'https://packages.microsoft.com/keys/microsoft.asc'
