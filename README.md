@@ -48,6 +48,7 @@
 * Touchpad MAC gestures : `make gestures`
 * CURA : `make cura`
 * Remmina : `make remmina`
+* Bleachbit : `make bleachbit`
 
 ## Requirements
 
