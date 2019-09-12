@@ -108,3 +108,6 @@ remmina:
 
 sqldeveloper:
 	ansible-playbook sqldeveloper.yml
+
+tweak:
+	ansible-playbook tweak.yml

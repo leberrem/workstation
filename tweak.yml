@@ -1,0 +1,16 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: Enable universe repository
+      become: yes
+      shell: "add-apt-repository universe"
+
+    - name: install tweak
+      become: yes
+      apt:
+        name:
+          - gnome-tweak-tool
+          - gnome-shell-extensions
+        state: present
