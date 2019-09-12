@@ -12,7 +12,7 @@
       file:
         path: "{{ discord_tmp }}"
         state: directory
-        
+
     - name: Download discord
       get_url:
         url: "{{ discord_url }}"

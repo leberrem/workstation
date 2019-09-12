@@ -19,11 +19,11 @@
       file:
         path: "/etc/docker/daemon.json"
         state: absent
-    
+
     - name: restart docker
       systemd:
         state: restarted
         daemon_reload: yes
-        name: docker   
+        name: docker
 
 

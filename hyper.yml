@@ -12,7 +12,7 @@
       file:
         path: "{{ hyper_tmp }}"
         state: directory
-        
+
     - name: Download hyper
       get_url:
         url: "{{ hyper_url }}"

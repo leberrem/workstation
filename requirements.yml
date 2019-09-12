@@ -1,8 +1,7 @@
 ---
- 
+
 - name: docker
   src: git+https://github.com/ultransible/docker.git
 
 - name: add-ca-authority
   src : git+https://gitlab.com/leberrem/add-ca-authority.git
-  

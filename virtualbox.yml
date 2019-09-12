@@ -28,11 +28,11 @@
       become: yes
       apt:
         name: ["virtualbox-6.0"]
-        state: present    
+        state: present
 
     - name: add user to group vboxusers & disk
       become: yes
-      command: "{{ item }}" 
+      command: "{{ item }}"
       with_items:
         - "usermod -a -G disk {{ whoami_output.stdout }}"
         - "usermod -a -G vboxusers {{ whoami_output.stdout }}"
@@ -54,7 +54,7 @@
       file:
         path: "{{ virtualbox_tmp }}"
         state: directory
-        
+
     - name: Download virtualbox extension
       get_url:
         url: "http://download.virtualbox.org/virtualbox/{{ version_output.stdout }}/Oracle_VM_VirtualBox_Extension_Pack-{{ version_output.stdout }}.vbox-extpack"

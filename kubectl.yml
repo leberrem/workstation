@@ -27,5 +27,3 @@
 
     - name: activation auto-completion for kubectl
       shell: kubectl completion bash >/etc/bash_completion.d/kubectl
-
-    
