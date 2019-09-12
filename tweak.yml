@@ -13,4 +13,5 @@
         name:
           - gnome-tweak-tool
           - gnome-shell-extensions
+          - gnome-shell-extension-workspaces-to-dock
         state: present
