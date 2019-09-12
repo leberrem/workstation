@@ -34,6 +34,7 @@
 * PS1 : `make ps1`
 * Welcome message : `make welcome`
 * Gnome tweaks : `make tweak`
+* Basic packages : `make basic`
 * Terminator : `make terminator`
 * Hyper : `make hyper`
 * Simplenote : `make simplenote`

@@ -111,3 +111,9 @@ sqldeveloper:
 
 tweak:
 	ansible-playbook tweak.yml
+
+basic:
+	ansible-playbook basic.yml
+
+bleachbit:
+	ansible-playbook bleachbit.yml

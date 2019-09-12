@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: install bleachbit
+      become: yes
+      apt:
+        name:
+          - bleachbit
+        state: present

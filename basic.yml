@@ -1,0 +1,26 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: install codecs
+      become: yes
+      apt:
+        name:
+          - ubuntu-restricted-extras
+        state: present
+
+    - name: install rar
+      become: yes
+      apt:
+        name:
+          - rar
+          - unrar
+        state: present
+
+    - name: install vlc
+      become: yes
+      apt:
+        name:
+          - vlc
+        state: present
