@@ -10,6 +10,13 @@
           - ubuntu-restricted-extras
         state: present
 
+    - name: install git
+      become: yes
+      apt:
+        name:
+          - git
+        state: present
+
     - name: install rar
       become: yes
       apt:
