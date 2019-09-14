@@ -3,6 +3,13 @@
 
   tasks:
 
+    - name: install aptitude
+      become: yes
+      apt:
+        name:
+          - aptitude
+        state: present
+
     - name: install codecs
       become: yes
       apt:
@@ -23,6 +30,13 @@
         name:
           - rar
           - unrar
+        state: present
+
+    - name: install sushi
+      become: yes
+      apt:
+        name:
+          - gnome-sushi
         state: present
 
     - name: install vlc
