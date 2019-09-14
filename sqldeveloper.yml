@@ -23,7 +23,6 @@
       get_url:
         url: '{{ sqldeveloper_url }}'
         dest: '{{ sqldeveloper_tmp }}/sqldeveloper.zip'
-        force: yes
 
     - name: extract sqldeveloper archive
       become: yes
