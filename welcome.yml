@@ -10,8 +10,14 @@
           - neofetch
         state: present
 
+    - name: configure neofetch
+      become: no
+      template:
+        src: templates/neofetch.j2
+        dest: ~/.config/neofetch/config_welcome.conf
+
     - name: add welcome message
       blockinfile:
         dest: ~/.bashrc
-        block: "/usr/bin/neofetch"
+        block: "/usr/bin/neofetch --disk_subtitle mount --memory_display infobar --backend off --config ~/.config/neofetch/config_welcome.conf"
         marker: "# {mark} ANSIBLE MANAGED BLOCK - WELCOME"
