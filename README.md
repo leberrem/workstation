@@ -61,7 +61,8 @@
 ### Configuration : sudo without password
 
 `sudo visudo`
-```
+
+```shell
 <$USER>   ALL=(ALL) NOPASSWD:ALL
 ```
 
