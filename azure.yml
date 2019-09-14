@@ -23,6 +23,7 @@
       apt:
         name: powershell
         state: present
+        update_cache: true
 
     - name: install powershell azure module
       command: "pwsh -noni -c 'Install-Module -Force -Name Az -AllowClobber'"
