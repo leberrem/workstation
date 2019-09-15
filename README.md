@@ -49,6 +49,7 @@
 * CURA : `make cura`
 * Remmina : `make remmina`
 * Bleachbit : `make bleachbit`
+* Kazam : `make kazam`
 
 ## Requirements
 

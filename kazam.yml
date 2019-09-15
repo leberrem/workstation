@@ -1,0 +1,14 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: install kazam 
+      become: yes
+      apt:
+        name:
+          - pavucontrol
+          - kazam
+          - gnome-alsamixer
+        state: present
+

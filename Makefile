@@ -117,4 +117,6 @@ basic:
 
 bleachbit:
 	ansible-playbook bleachbit.yml
-	
+
+kazam:
+	ansible-playbook kazam.yml	
