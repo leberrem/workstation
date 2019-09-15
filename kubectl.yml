@@ -4,26 +4,26 @@
 
   tasks:
 
-    - name: install key (apt)
+    - name: KUBECTL - add key
       apt_key:
         url: 'https://packages.cloud.google.com/apt/doc/apt-key.gpg'
         state: present
 
-    - name: install kubernetes repo (apt)
+    - name: KUBECTL - add kubernetes repo
       apt_repository:
         repo: deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main
         filename: kubernetes
         state: present
 
-    - name: install kubectl (apt)
+    - name: KUBECTL - install kubectl
       apt:
         name: kubectl
         state: present
 
-    - name: install bash-completion (apt)
+    - name: KUBECTL - install bash-completion (apt)
       apt:
         name: bash-completion
         state: present
 
-    - name: activation auto-completion for kubectl
+    - name: KUBECTL - activate auto-completion for kubectl
       shell: kubectl completion bash >/etc/bash_completion.d/kubectl
