@@ -19,9 +19,6 @@ meld:
 terminator:
 	ansible-playbook terminator.yml
 
-hyper:
-	ansible-playbook hyper.yml
-
 terraform:
 	ansible-playbook terraform.yml
 

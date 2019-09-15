@@ -36,7 +36,6 @@
 * Gnome tweaks : `make tweak`
 * Basic packages : `make basic`
 * Terminator : `make terminator`
-* Hyper : `make hyper`
 * Simplenote : `make simplenote`
 * Typora : `make typora`
 * Openboard : `make openboard`
