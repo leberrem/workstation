@@ -19,5 +19,5 @@
     - name: add welcome message
       blockinfile:
         dest: ~/.bashrc
-        block: "/usr/bin/neofetch --disk_subtitle mount --memory_display infobar --backend off --config ~/.config/neofetch/config_welcome.conf"
+        block: "/usr/bin/neofetch --bold off --disk_subtitle mount --memory_display infobar --backend off --colors '2 4 4 2 4 7' --config ~/.config/neofetch/config_welcome.conf"
         marker: "# {mark} ANSIBLE MANAGED BLOCK - WELCOME"
