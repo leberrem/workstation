@@ -18,6 +18,7 @@
         force: yes
 
     - name: Copy icon image
+      become: yes
       copy:
         src: files/cura.png
         dest: /opt/cura/icon.png
