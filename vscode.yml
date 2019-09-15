@@ -3,7 +3,7 @@
 
   tasks:
 
-    - name: install dependencies (apt)
+    - name: VSCODE - install dependencies
       become: yes
       apt:
         name:
@@ -15,26 +15,26 @@
           - libxss1
         state: present
 
-    - name: install key (apt)
+    - name: VSCODE - add key
       become: yes
       apt_key:
         url: 'https://packages.microsoft.com/keys/microsoft.asc'
         state: present
 
-    - name: install VS Code repo (apt)
+    - name: VSCODE - add repository
       become: yes
       apt_repository:
         repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
         filename: vscode
         state: present
 
-    - name: install VS Code (apt)
+    - name: VSCODE - install package
       become: yes
       apt:
         name: "code"
         state: present
 
-    - name: install VS Code extensions
+    - name: VSCODE - install extensions
       shell: code --install-extension {{ item }} --force
       with_items:
         - ms-azuretools.vscode-docker

@@ -3,20 +3,20 @@
 
   tasks:
 
-    - name: install landscape
+    - name: WELCOME - install neofetch
       become: yes
       apt:
         name:
           - neofetch
         state: present
 
-    - name: configure neofetch
+    - name: WELCOME - configure neofetch
       become: no
       template:
         src: templates/neofetch.j2
         dest: ~/.config/neofetch/config_welcome.conf
 
-    - name: add welcome message
+    - name: WELCOME - add welcome message
       blockinfile:
         dest: ~/.bashrc
         block: "/usr/bin/neofetch --bold off --disk_subtitle mount --memory_display infobar --backend off --colors '2 4 4 2 4 7' --config ~/.config/neofetch/config_welcome.conf"

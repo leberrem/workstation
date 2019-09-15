@@ -3,7 +3,7 @@
 
   tasks:
 
-    - name: Download minikube archive
+    - name: MINIKUBE - Download and install archive
       become: yes
       get_url:
         url: 'https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64'

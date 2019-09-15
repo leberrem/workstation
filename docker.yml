@@ -4,23 +4,23 @@
 
   tasks:
 
-    - name: get the username running the deploy
+    - name: DOCKER - get the username running the deploy
       become: false
       local_action: command whoami
       register: username_on_the_host
 
-    - name: Install docker
+    - name: DOCKER - Install docker
       include_role:
         name: docker
       vars:
         docker_users: ["{{ username_on_the_host.stdout }}"]
 
-    - name: remove remap configuration
+    - name: DOCKER - remove remap configuration
       file:
         path: "/etc/docker/daemon.json"
         state: absent
 
-    - name: restart docker
+    - name: DOCKER - restart docker
       systemd:
         state: restarted
         daemon_reload: yes

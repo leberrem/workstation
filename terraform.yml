@@ -3,20 +3,20 @@
 
   tasks:
 
-    - name: install dependencies (apt)
+    - name: TERRAFORM - install dependencies (apt)
       become: yes
       apt:
         name:
           - unzip
         state: present
 
-    - name: install dependencies (pip)
+    - name: TERRAFORM - install dependencies (pip)
       become: yes
       pip:
         name:
           - jmespath
 
-    - name: get latest terraform version id
+    - name: TERRAFORM - get latest terraform version id
       uri:
         url: 'https://checkpoint-api.hashicorp.com/v1/check/terraform'
         method: GET
@@ -30,23 +30,23 @@
     - debug:
         msg: "terraform latest version : {{ terraform_version }}"
 
-    - name: Download Terraform archive
+    - name: TERRAFORM - Download archive
       get_url:
         url: 'https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip'
         dest: '/tmp/terraform-{{ terraform_version }}.zip'
         force: yes
 
-    - name: Unarchive Terraform archive
+    - name: TERRAFORM - Extract archive
       become: yes
       unarchive:
         src: /tmp/terraform-{{ terraform_version }}.zip
         dest: /usr/bin/
         copy: no
 
-    - name: Remove Terraform archive
+    - name: TERRAFORM - Remove archive
       file:
         path: /tmp/terraform-{{ terraform_version }}.zip
         state: absent
 
-    - name: install terraform autocomplete
+    - name: TERRAFORM - install terraform autocomplete
       shell: terraform -install-autocomplete

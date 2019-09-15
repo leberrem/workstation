@@ -7,37 +7,37 @@
 
   tasks:
 
-    - name: install dependencies
+    - name: SQLDEVELOPER - install dependencies
       become: yes
       apt:
         name:
           - openjdk-11-jre
         state: present
 
-    - name: Create sqldeveloper temporary directory
+    - name: SQLDEVELOPER - Create temporary directory
       file:
         path: "{{ sqldeveloper_tmp }}"
         state: directory
 
-    - name: Download sqldeveloper
+    - name: SQLDEVELOPER - Download archive
       get_url:
         url: '{{ sqldeveloper_url }}'
         dest: '{{ sqldeveloper_tmp }}/sqldeveloper.zip'
 
-    - name: extract sqldeveloper archive
+    - name: SQLDEVELOPER - extract archive
       become: yes
       unarchive:
         src: '{{ sqldeveloper_tmp }}/sqldeveloper.zip'
         dest: /opt
         copy: no
 
-    - name: create shortcut
+    - name: SQLDEVELOPER - create shortcut
       become: no
       template:
         src: templates/sqldeveloper.j2
         dest: ~/.local/share/applications/sqldeveloper.desktop
 
-    - name: Remove sqldeveloper temporary directory
+    - name: SQLDEVELOPER - Remove temporary directory
       file:
         path: "{{ sqldeveloper_tmp }}"
         state: absent

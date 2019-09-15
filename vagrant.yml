@@ -8,25 +8,25 @@
 
   tasks:
 
-    - name: Creates vagrant temporary directory
+    - name: VAGRANT - Creates temporary directory
       file:
         path: "{{ vagrant_tmp }}"
         state: directory
 
-    - name: Download vagrant
+    - name: VAGRANT - Download archive
       get_url:
         url: "{{ vagrant_url }}"
         dest: "{{ vagrant_tmp }}/vagrant.zip"
         force: yes
 
-    - name: Unarchive Terraform archive
+    - name: VAGRANT - Extract archive
       become: yes
       unarchive:
         src: "{{ vagrant_tmp }}/vagrant.zip"
         dest: /usr/bin/
         copy: no
 
-    - name: Remove vagrant temporary directory
+    - name: VAGRANT - Remove temporary directory
       file:
         path: "{{ vagrant_tmp }}"
         state: absent

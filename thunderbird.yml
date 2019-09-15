@@ -9,35 +9,35 @@
 
   tasks:
 
-    - name: Creates thunderbird temporary directory
+    - name: THUNDERBIRD - Creates temporary directory
       file:
         path: "{{ thunderbird_tmp }}"
         state: directory
 
-    - name: Download thunderbird
+    - name: THUNDERBIRD - Download archive
       get_url:
         url: "{{ thunderbird_url }}"
         dest: "{{ thunderbird_tmp }}/thunderbird.tar.bz2"
         force: yes
 
-    - name: Extract thunderbird archive
+    - name: THUNDERBIRD - Extract archive
       unarchive:
         src: "{{ thunderbird_tmp }}/thunderbird.tar.bz2"
         dest: /opt
         remote_src: no
 
-    - name: Copy icon image
+    - name: THUNDERBIRD - Copy icon image
       copy:
         src: files/thunderbird.png
         dest: /opt/thunderbird/icon.png
 
-    - name: create shortcut
+    - name: THUNDERBIRD - create shortcut
       become: no
       template:
         src: templates/thunderbird.j2
         dest: ~/.local/share/applications/thunderbird.desktop
 
-    - name: Remove thunderbird temporary directory
+    - name: THUNDERBIRD - Remove temporary directory
       file:
         path: "{{ thunderbird_tmp }}"
         state: absent

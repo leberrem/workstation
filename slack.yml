@@ -8,22 +8,22 @@
 
   tasks:
 
-    - name: Creates slack temporary directory
+    - name: SLACK - Creates temporary directory
       file:
         path: "{{ slack_tmp }}"
         state: directory
 
-    - name: Download slack
+    - name: SLACK - Download package
       get_url:
         url: "{{ slack_url }}"
         dest: "{{ slack_tmp }}/slack.deb"
         force: yes
 
-    - name: Install my_package
+    - name: SLACK - Install package
       apt:
         deb: "{{ slack_tmp }}/slack.deb"
 
-    - name: Remove slack temporary directory
+    - name: SLACK - Remove temporary directory
       file:
         path: "{{ slack_tmp }}"
         state: absent

@@ -3,7 +3,7 @@
 
   tasks:
 
-    - name: add PS1 configuration
+    - name: PS1 - add configuration
       blockinfile:
         dest: ~/.bashrc
         block: "{{ lookup('template', 'templates/ps1.j2') }}"

@@ -8,22 +8,22 @@
 
   tasks:
 
-    - name: Creates dive temporary directory
+    - name: DIVE - Creates temporary directory
       file:
         path: "{{ dive_tmp }}"
         state: directory
 
-    - name: Download dive
+    - name: DIVE - Download dive
       get_url:
         url: "{{ dive_url }}"
         dest: "{{ dive_tmp }}/dive.deb"
         force: yes
 
-    - name: Install dive package
+    - name: DIVE - Install dive package
       apt:
         deb: "{{ dive_tmp }}/dive.deb"
 
-    - name: Remove dive temporary directory
+    - name: DIVE - Remove temporary directory
       file:
         path: "{{ dive_tmp }}"
         state: absent

@@ -4,20 +4,20 @@
 
   tasks:
 
-    - name: install key (apt)
+    - name: TYPORA - add key
       become: yes
       apt_key:
         url: 'https://typora.io/linux/public-key.asc'
         state: present
 
-    - name: install typora repo (apt)
+    - name: TYPORA - install repository
       become: yes
       apt_repository:
         repo: deb https://typora.io/linux ./
         filename: typora
         state: present
 
-    - name: install Typora (apt)
+    - name: TYPORA - install package
       become: yes
       apt:
         name: typora

@@ -4,10 +4,10 @@
 
   tasks:
 
-    - name: add libreOffice repository
+    - name: LIBREOFFICE - add libreOffice repository
       apt_repository:
         repo: ppa:libreoffice/ppa
 
-    - name: Install libreoffice
+    - name: LIBREOFFICE - Install packages
       apt:
         name: [ "libreoffice", "libreoffice-help-fr", "libreoffice-l10n-fr" ]

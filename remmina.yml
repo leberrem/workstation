@@ -4,10 +4,10 @@
 
   tasks:
 
-    - name: add remmina repository
+    - name: REMMINA - add remmina repository
       apt_repository:
         repo: ppa:remmina-ppa-team/remmina-next
 
-    - name: Install remmina and plugin
+    - name: REMMINA - Install remmina and plugins
       apt:
         name: [ "remmina","remmina-plugin-rdp","remmina-plugin-secret","remmina-plugin-spice" ]

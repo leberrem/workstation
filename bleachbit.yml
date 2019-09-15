@@ -3,7 +3,7 @@
 
   tasks:
 
-    - name: install bleachbit
+    - name: BLEACHBIT - install
       become: yes
       apt:
         name:

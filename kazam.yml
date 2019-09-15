@@ -3,7 +3,7 @@
 
   tasks:
 
-    - name: install kazam 
+    - name: KAZAM - install packages 
       become: yes
       apt:
         name:

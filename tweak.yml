@@ -3,11 +3,11 @@
 
   tasks:
 
-    - name: Enable universe repository
+    - name: TWEAK - Enable universe repository
       become: yes
       shell: "add-apt-repository universe"
 
-    - name: install tweak
+    - name: TWEAK - install packages
       become: yes
       apt:
         name:

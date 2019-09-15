@@ -8,22 +8,22 @@
 
   tasks:
 
-    - name: Creates discord temporary directory
+    - name: DISCORD - Creates temporary directory
       file:
         path: "{{ discord_tmp }}"
         state: directory
 
-    - name: Download discord
+    - name: DISCORD - Download discord
       get_url:
         url: "{{ discord_url }}"
         dest: "{{ discord_tmp }}/discord.deb"
         force: yes
 
-    - name: Install my_package
+    - name: DISCORD - Install my_package
       apt:
         deb: "{{ discord_tmp }}/discord.deb"
 
-    - name: Remove discord temporary directory
+    - name: DISCORD - Remove temporary directory
       file:
         path: "{{ discord_tmp }}"
         state: absent

@@ -3,13 +3,13 @@
 
   tasks:
 
-    - name: Creates application directory
+    - name: CURA - creates application directory
       become: yes
       file:
         path: "/opt/cura"
         state: directory
 
-    - name: Download application
+    - name: CURA - Download application
       become: yes
       get_url:
         url: 'https://software.ultimaker.com/cura/Ultimaker_Cura-4.2.1.AppImage'
@@ -17,20 +17,20 @@
         mode: 775
         force: yes
 
-    - name: Copy icon image
+    - name: CURA - Copy icon image
       become: yes
       copy:
         src: files/cura.png
         dest: /opt/cura/icon.png
 
-    - name: Create symbolic link
+    - name: CURA - Create symbolic link
       become: yes
       file:
         src: "/opt/cura/cura.AppImage"
         dest: "/usr/bin/cura"
         state: link
 
-    - name: create shortcut
+    - name: CURA - create shortcut
       template:
         src: templates/cura.j2
         dest: ~/.local/share/applications/cura.desktop

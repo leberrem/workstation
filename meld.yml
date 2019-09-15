@@ -3,7 +3,7 @@
 
   tasks:
 
-    - name: install meld (apt)
+    - name: MELD - install package
       become: yes
       apt:
         name: meld

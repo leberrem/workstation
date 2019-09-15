@@ -7,28 +7,28 @@
 
   tasks:
 
-    - name: install gimp (apt)
+    - name: GIMP - install gimp (apt)
       become: yes
       apt:
         name: gimp
         state: present
 
-    - name: Creates gimp theme temporary directory
+    - name: GIMP - Creates gimp theme temporary directory
       file:
         path: "{{ gimp_tmp }}"
         state: directory
 
-    - name: Download install script gimp theme
+    - name: GIMP - Download install script gimp theme
       get_url:
         url: "{{ gimp_url }}"
         dest: "{{ gimp_tmp }}/install.sh"
         force: yes
         mode: "775"
 
-    - name: Laucnh install script gimp Theme
+    - name: GIMP - Laucnh install script gimp Theme
       shell: "{{ gimp_tmp }}/install.sh"
 
-    - name: Remove gimp temporary directory
+    - name: GIMP - Remove gimp temporary directory
       file:
         path: "{{ gimp_tmp }}"
         state: absent

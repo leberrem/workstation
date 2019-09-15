@@ -10,35 +10,35 @@
 
   tasks:
 
-    - name: Creates robo3t temporary directory
+    - name: ROBO3T - Creates temporary directory
       file:
         path: "{{ robo3t_tmp }}"
         state: directory
 
-    - name: Download robo3t
+    - name: ROBO3T - Download archive
       get_url:
         url: "{{ robo3t_url }}"
         dest: "{{ robo3t_tmp }}/robo3t.tar.gz"
         force: yes
 
-    - name: Extract robo3t archive
+    - name: ROBO3T - Extract archive
       unarchive:
         src: "{{ robo3t_tmp }}/robo3t.tar.gz"
         dest: /opt
         remote_src: no
 
-    - name: Copy icon image
+    - name: ROBO3T - Copy icon image
       copy:
         src: files/robo3t.png
         dest: /opt/{{ robo3t_app }}/icon.png
 
-    - name: create shortcut
+    - name: ROBO3T - create shortcut
       become: no
       template:
         src: templates/robo3t.j2
         dest: ~/.local/share/applications/robo3t.desktop
 
-    - name: Remove robo3t temporary directory
+    - name: ROBO3T - Remove temporary directory
       file:
         path: "{{ robo3t_tmp }}"
         state: absent

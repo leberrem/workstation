@@ -3,32 +3,32 @@
 
   tasks:
 
-    - name: Download postman archive
+    - name: POSTMAN - Download archive
       get_url:
         url: 'https://dl.pstmn.io/download/latest/linux64'
         dest: '/tmp/postman.tar.gz'
         force: yes
 
-    - name: Unarchive postman archive
+    - name: POSTMAN - Extract archive
       become: yes
       unarchive:
         src: /tmp/postman.tar.gz
         dest: /opt
         copy: no
 
-    - name: Create symbolic link
+    - name: POSTMAN - Create symbolic link
       become: yes
       file:
         src: "/opt/Postman/Postman"
         dest: "/usr/bin/postman"
         state: link
 
-    - name: create shortcut
+    - name: POSTMAN - create shortcut
       template:
         src: templates/postman.j2
         dest: ~/.local/share/applications/postman.desktop
 
-    - name: Remove postman archive
+    - name: POSTMAN - Remove archive
       file:
         path: /tmp/postman.tar.gz
         state: absent

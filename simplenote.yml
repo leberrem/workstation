@@ -8,22 +8,22 @@
 
   tasks:
 
-    - name: Creates simplenote temporary directory
+    - name: SIMPLENOTE - Creates temporary directory
       file:
         path: "{{ simplenote_tmp }}"
         state: directory
 
-    - name: Download simplenote
+    - name: SIMPLENOTE - Download package
       get_url:
         url: "{{ simplenote_url }}"
         dest: "{{ simplenote_tmp }}/simplenote.deb"
         force: yes
 
-    - name: Install simplenote package
+    - name: SIMPLENOTE - Install package
       apt:
         deb: "{{ simplenote_tmp }}/simplenote.deb"
 
-    - name: Remove simplenote temporary directory
+    - name: SIMPLENOTE - Remove temporary directory
       file:
         path: "{{ simplenote_tmp }}"
         state: absent

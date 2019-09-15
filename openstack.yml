@@ -3,7 +3,7 @@
 
   tasks:
 
-    - name: install client with pip
+    - name: OPENSTACK - install client app with pip
       become: yes
       pip:
         name:

@@ -8,7 +8,7 @@
 
   tasks:
 
-    - name: Install prereqs
+    - name: OPENBOARD - Install prereqs
       apt:
         name: [
           "libqt5webkit5",
@@ -16,22 +16,22 @@
           "libqt5script5"
         ]
 
-    - name: Creates openboard temporary directory
+    - name: OPENBOARD - Creates temporary directory
       file:
         path: "{{ openboard_tmp }}"
         state: directory
 
-    - name: Download openboard
+    - name: OPENBOARD - Download package
       get_url:
         url: "{{ openboard_url }}"
         dest: "{{ openboard_tmp }}/openboard.deb"
         force: yes
 
-    - name: Install openboard package
+    - name: OPENBOARD - Install openboard package
       apt:
         deb: "{{ openboard_tmp }}/openboard.deb"
 
-    - name: Remove openboard temporary directory
+    - name: OPENBOARD - Remove temporary directory
       file:
         path: "{{ openboard_tmp }}"
         state: absent

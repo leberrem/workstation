@@ -3,20 +3,20 @@
 
   tasks:
 
-    - name: install key (apt)
+    - name: WINEHQ - add key
       become: yes
       apt_key:
         url: 'https://dl.winehq.org/wine-builds/winehq.key'
         state: present
 
-    - name: install VS Code repo (apt)
+    - name: WINEHQ - add repository
       become: yes
       apt_repository:
         repo: deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main
         filename: winehq
         state: present
 
-    - name: install VS Code (apt)
+    - name: WINEHQ - install package
       become: yes
       apt:
         name: winehq-stable

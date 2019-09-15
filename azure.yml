@@ -9,72 +9,72 @@
 
   tasks:
 
-    - name: install cifs-utils
+    - name: AZURE - install cifs-utils
       apt:
         name: cifs-utils
         state: present
 
-    - name: install powershell Microsoft repository
+    - name: AZURE - add powershell Microsoft repository
       apt:
         deb: https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
         update_cache: true
 
-    - name: install powershell
+    - name: AZURE - install powershell
       apt:
         name: powershell
         state: present
         update_cache: true
 
-    - name: install powershell azure module
+    - name: AZURE - install powershell azure module
       command: "pwsh -noni -c 'Install-Module -Force -Name Az -AllowClobber'"
 
-    - name: install powershell MsOnline module
+    - name: AZURE - install powershell MsOnline module
       command: "pwsh -noni -c 'Install-Module -Force -Name MsOnline -AllowClobber'"
 
-    - name: import powershell MsOnline module
+    - name: AZURE - import powershell MsOnline module
       command: "pwsh -noni -c 'Import-Module MSonline'"
 
-    - name: install microsoft azure-cli key
+    - name: AZURE - add microsoft azure-cli key
       apt_key:
         url: 'https://packages.microsoft.com/keys/microsoft.asc'
         state: present
 
-    - name: install microsoft azure-cli repository
+    - name: AZURE - add microsoft azure-cli repository
       apt_repository:
         repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ bionic main'
         state: present
 
-    - name: install azure-cli
+    - name: AZURE - install azure-cli
       apt:
         name: azure-cli
         state: present
 
-    - name: Creates azure temporary directory
+    - name: AZURE - Creates temporary directory
       become: yes
       file:
         path: "{{ azure_tmp }}"
         state: directory
 
-    - name: download azcopy
+    - name: AZURE - download azcopy
       get_url:
         url: "{{ azcopy_url }}"
         dest: "{{ azure_tmp }}/azcopy.tar.gz"
         force: yes
 
-    - name: extract azcopy
+    - name: AZURE - extract azcopy
       unarchive:
         src: '{{ azure_tmp }}/azcopy.tar.gz'
         dest: /opt
         copy: no
 
-    - name: Create symbolic link
+    - name: AZURE - Create symbolic link
       become: yes
       file:
         src: "/opt/{{ azcopy_name }}/azcopy"
         dest: "/usr/bin/azcopy"
         state: link
 
-    - name: Remove azure temporary directory
+    - name: AZURE - Remove temporary directory
       become: yes
       file:
         path: "{{ azure_tmp }}"

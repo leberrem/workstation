@@ -3,7 +3,7 @@
   become : yes
   tasks:
 
-    - name: Add SIRIUS to trusted authority
+    - name: CERTIFICATE - Add to trusted authority
       include_role:
         name: add-ca-authority
       vars:

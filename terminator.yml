@@ -3,18 +3,18 @@
 
   tasks:
 
-    - name: install terminator (apt)
+    - name: TERMINATOR - install package
       become: yes
       apt:
         name: terminator
         state: present
 
-    - name: Creates hyper temporary directory
+    - name: TERMINATOR - Create config directory
       file:
         path: "~/.config/terminator"
         state: directory
 
-    - name: default configuration
+    - name: TERMINATOR - default configuration
       become: no
       template:
         src: templates/terminator.j2

@@ -7,61 +7,61 @@
 
   tasks:
 
-    - name: get the username
+    - name: GESTURES - get the username
       become: false
       command: whoami
       register: whoami_output
 
-    - name: add user to group input
+    - name: GESTURES - add user to group input
       become: yes
       command: "gpasswd -a {{ whoami_output.stdout }} input"
 
-    - name: install dependencies
+    - name: GESTURES - install dependencies
       become: yes
       apt:
         name: ["xdotool", "wmctrl", "libinput-tools"]
         state: present
 
-    - name: Creates gestures temporary directory
+    - name: GESTURES - Creates gestures temporary directory
       become: yes
       file:
         path: "{{ gestures_tmp }}"
         state: directory
 
-    - name: Clone gestures project
+    - name: GESTURES - Clone gestures project
       become: yes
       git:
         repo: "{{ gestures_url }}"
         dest: "{{ gestures_tmp }}"
 
-    - name: Install gestures
+    - name: GESTURES - Install gestures
       become: yes
       command: ./libinput-gestures-setup install
       args:
         chdir: "{{ gestures_tmp }}"
 
-    - name: Remove gestures temporary directory
+    - name: GESTURES - Remove gestures temporary directory
       become: yes
       file:
         path: "{{ gestures_tmp }}"
         state: absent
 
-    - name: Creates configuration directory
+    - name: GESTURES - Creates configuration directory
       become: false
       file:
         path: "/home/{{ whoami_output.stdout }}/.config"
         state: directory
 
-    - name: create config file
+    - name: GESTURES - create config file
       become: false
       template: 
         src: templates/libinput-gestures.j2
         dest: "/home/{{ whoami_output.stdout }}/.config/libinput-gestures.conf"
 
-    - name: apply gestures configuration
+    - name: GESTURES - apply gestures configuration
       become: false
       command : libinput-gestures-setup restart
 
-    - name: autostart gestures 
+    - name: GESTURES - autostart gestures 
       become: false
       command : libinput-gestures-setup autostart

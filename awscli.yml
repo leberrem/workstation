@@ -3,7 +3,7 @@
 
   tasks:
 
-    - name: install awscli
+    - name: AWSCLI - install
       pip:
         name: awscli
         extra_args: --upgrade --user

@@ -8,22 +8,22 @@
 
   tasks:
 
-    - name: Creates teams temporary directory
+    - name: TEAMS - Creates temporary directory
       file:
         path: "{{ teams_tmp }}"
         state: directory
 
-    - name: Download teams
+    - name: TEAMS - Download package
       get_url:
         url: "{{ teams_url }}"
         dest: "{{ teams_tmp }}/teams.deb"
         force: yes
 
-    - name: Install teams package
+    - name: TEAMS - Install package
       apt:
         deb: "{{ teams_tmp }}/teams.deb"
 
-    - name: Remove teams temporary directory
+    - name: TEAMS - Remove temporary directory
       file:
         path: "{{ teams_tmp }}"
         state: absent

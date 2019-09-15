@@ -9,37 +9,37 @@
 
   tasks:
 
-    - name: Install aptitude (apt)
+    - name: ARDUINO - Install aptitude
       apt:
         name: aptitude
 
-    - name: install tar (apt)
+    - name: ARDUINO - install prereqs
       apt:
         name: ['tar',
               'xz-utils']
         state: present
 
-    - name: Creates arduino temporary directory
+    - name: ARDUINO - Creates temporary directory
       file:
         path: "{{ arduino_tmp }}"
         state: directory
 
-    - name: Download arduino
+    - name: ARDUINO - Download archive
       get_url:
         url: "{{ arduino_url }}"
         dest: "{{ arduino_tmp }}/arduino.tar.xz"
         force: yes
 
-    - name: Extract arduino archive
+    - name: ARDUINO - Extract archive
       unarchive:
         src: "{{ arduino_tmp }}/arduino.tar.xz"
         dest: /opt
         remote_src: no
 
-    - name: Install arduino IDE
+    - name: ARDUINO - Install IDE
       shell: "/opt/arduino-{{ arduino_version }}/install.sh"
 
-    - name: Remove arduino temporary directory
+    - name: ARDUINO - Remove temporary directory
       file:
         path: "{{ arduino_tmp }}"
         state: absent

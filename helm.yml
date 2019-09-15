@@ -8,37 +8,37 @@
 
   tasks:
 
-    - name: Creates helm temporary directory
+    - name: HELM - Creates temporary directory
       file:
         path: "{{ helm_tmp }}"
         state: directory
 
-    - name: Download helm
+    - name: HELM - Download helm
       get_url:
         url: "{{ helm_url }}"
         dest: "{{ helm_tmp }}/helm.tar.gz"
         force: yes
 
-    - name: Extract helm
+    - name: HELM - Extract archive
       unarchive:
         src: "{{ helm_tmp }}/helm.tar.gz"
         dest: "{{ helm_tmp }}"
 
-    - name: Move helm to /usr/local/bin/
+    - name: HELM - Move helm to /usr/local/bin/
       command: mv {{ helm_tmp }}/linux-amd64/helm /usr/local/bin/helm
 
-    - name: Move tiller to /usr/local/bin/
+    - name: HELM - Move tiller to /usr/local/bin/
       command: mv {{ helm_tmp }}/linux-amd64/tiller /usr/local/bin/tiller
 
-    - name: install bash-completion (apt)
+    - name: HELM - install bash-completion
       apt:
         name: bash-completion
         state: present
 
-    - name: activation auto-completion for helm
+    - name: HELM - activate auto-completion for helm
       shell: helm completion bash >/etc/bash_completion.d/helm
 
-    - name: Remove helm temporary directory
+    - name: HELM - Remove temporary directory
       file:
         path: "{{ helm_tmp }}"
         state: absent

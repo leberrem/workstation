@@ -3,28 +3,28 @@
 
   tasks:
 
-    - name: install aptitude
+    - name: BASIC - install aptitude
       become: yes
       apt:
         name:
           - aptitude
         state: present
 
-    - name: install codecs
+    - name: BASIC - install codecs
       become: yes
       apt:
         name:
           - ubuntu-restricted-extras
         state: present
 
-    - name: install git
+    - name: BASIC - install git
       become: yes
       apt:
         name:
           - git
         state: present
 
-    - name: install rar
+    - name: BASIC - install rar
       become: yes
       apt:
         name:
@@ -32,14 +32,14 @@
           - unrar
         state: present
 
-    - name: install sushi
+    - name: BASIC - install sushi
       become: yes
       apt:
         name:
           - gnome-sushi
         state: present
 
-    - name: install vlc
+    - name: BASIC - install vlc
       become: yes
       apt:
         name:
