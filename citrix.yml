@@ -3,7 +3,8 @@
   become: yes
 
   vars:
-    citrix_url: "https://downloads.citrix.com/16537/icaclient_19.8.0.20_amd64.deb?__gda__=1568648662_ea2d403d6bbfd4ffb39ca4474973263d"
+    #citrix_url: "https://downloads.citrix.com/16537/icaclient_19.8.0.20_amd64.deb?__gda__=1568648662_ea2d403d6bbfd4ffb39ca4474973263d"
+    citrix_url: "https://downloads.citrix.com/16537/icaclientWeb_19.8.0.20_amd64.deb?__gda__=1568650703_ba06bb4266074f043c52dcdbfe1ef5c5"
     citrix_tmp: "/tmp/citrix"
 
   tasks:
