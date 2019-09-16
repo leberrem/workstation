@@ -22,6 +22,8 @@
 * OpenStack : `make openstack`
 * Virtualbox : `make virtualbox`
 * Vagrant : `make vagrant`
+* Remmina : `make remmina`
+* Citrix : `make citrix`
 
 ## Social tools
 
@@ -46,7 +48,6 @@
 * Gimp : `make gimp`
 * Touchpad MAC gestures : `make gestures`
 * CURA : `make cura`
-* Remmina : `make remmina`
 * Bleachbit : `make bleachbit`
 * Kazam : `make kazam`
 

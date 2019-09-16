@@ -117,3 +117,6 @@ bleachbit:
 
 kazam:
 	ansible-playbook kazam.yml	
+
+citrix:
+	ansible-playbook citrix.yml	
