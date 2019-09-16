@@ -45,3 +45,18 @@
         name:
           - vlc
         state: present
+
+    - name: BASIC - install samba
+      become: yes
+      apt:
+        name:
+          - samba
+        state: present        
+
+    - name: BASIC - install openvpn
+      become: yes
+      apt:
+        name:
+          - openvpn
+          - openresolv
+        state: present
