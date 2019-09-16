@@ -17,6 +17,15 @@
           - ubuntu-restricted-extras
         state: present
 
+    - name: BASIC - install network tools
+      become: yes
+      apt:
+        name:
+          - curl
+          - wget
+          - net-tools
+        state: present
+
     - name: BASIC - install git
       become: yes
       apt:
