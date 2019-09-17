@@ -123,3 +123,6 @@ citrix:
 
 rundeck:
 	ansible-playbook rundeck.yml
+
+chrome:
+	ansible-playbook chrome.yml

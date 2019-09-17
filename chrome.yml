@@ -1,0 +1,43 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    chrome_driver_url: https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip
+
+  tasks:
+
+    - name: CHROME - install dependencies
+      apt:
+        name: 
+        - unzip 
+        - xvfb 
+        - libxi6 
+        - libgconf-2-4
+        - default-jdk 
+        state: present
+
+    - name: CHROME - add google repository key
+      apt_key:
+        url: 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
+        state: present
+
+    - name: CHROME - add google repository
+      apt_repository:
+        repo: 'deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main'
+        state: present
+        update_cache: yes
+
+    - name: CHROME - install package
+      apt:
+        name: google-chrome-stable
+        state: present
+
+    - name: CHROME - Install chromedriver
+      become: yes
+      unarchive:
+        src: "{{ chrome_driver_url }}"
+        dest: /usr/bin/
+        copy: no
+        mode: 775
+
