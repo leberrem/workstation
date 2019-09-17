@@ -69,3 +69,11 @@
           - openvpn
           - openresolv
         state: present
+
+    - name: BASIC - install jq
+      become: yes
+      apt:
+        name:
+          - jq
+        state: present
+
