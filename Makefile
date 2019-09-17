@@ -116,7 +116,10 @@ bleachbit:
 	ansible-playbook bleachbit.yml
 
 kazam:
-	ansible-playbook kazam.yml	
+	ansible-playbook kazam.yml
 
 citrix:
-	ansible-playbook citrix.yml	
+	ansible-playbook citrix.yml
+
+rundeck:
+	ansible-playbook rundeck.yml

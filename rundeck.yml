@@ -1,0 +1,25 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: RUNDECK - install dependencies
+      apt:
+        name: apt-transport-https
+        state: present
+
+    - name: RUNDECK - add rundeck repository key
+      apt_key:
+        url: 'https://bintray.com/user/downloadSubjectPublicKey?username=bintray'
+        state: present
+
+    - name: RUNDECK - add rundeck repository
+      apt_repository:
+        repo: 'deb https://dl.bintray.com/rundeck/rundeck-deb /'
+        state: present
+
+    - name: RUNDECK - install rundeck-cli
+      apt:
+        name: rundeck-cli
+        state: present

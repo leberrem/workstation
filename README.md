@@ -15,6 +15,7 @@
 * Terraform : `make terraform`
 * AWS-cli : `make awscli`
 * AZURE-cli : `make azure`
+* Rundeck-cli : `make rundeck`
 * Docker : `make docker`
 * Kubectl : `make kubectl`
 * Minikube : `make minikube`
