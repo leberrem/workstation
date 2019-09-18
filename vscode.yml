@@ -37,6 +37,7 @@
     - name: VSCODE - install extensions
       shell: code --install-extension {{ item }} --force
       with_items:
+        - donjayamanne.githistory
         - ms-azuretools.vscode-docker
         - vscoss.vscode-ansible
         - rupisaini.vscode-ansible-linter
