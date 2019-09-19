@@ -1,0 +1,66 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    version: "0.18.1"
+    archive_url: "https://github.com/prometheus/node_exporter/releases/download/v{{ version }}/node_exporter-{{ version }}.linux-amd64.tar.gz"
+    tmp_directory: "/tmp/nodeexporter"
+
+  tasks:
+
+    - name: NODEEXPORTER - Creates temporary directory
+      file:
+        path: "{{ tmp_directory }}"
+        state: directory
+
+    - name: NODEEXPORTER - Download archive
+      get_url:
+        url: "{{ archive_url }}"
+        dest: "{{ tmp_directory }}/node_exporter.zip"
+        force: yes
+
+    - name: NODEEXPORTER - Extract archive
+      unarchive:
+        src: "{{ tmp_directory }}/node_exporter.zip"
+        dest: "{{ tmp_directory }}"
+        remote_src: no
+
+    - name: NODEEXPORTER - Copy binary
+      copy:
+        src: "{{ tmp_directory }}/node_exporter-{{ version }}.linux-amd64/node_exporter"
+        dest: /usr/local/bin/node_exporter
+        mode: 775       
+
+    - name: NODEEXPORTER - Create group
+      group:
+        name: "node_exporter"
+        state: present
+
+    - name: NODEEXPORTER - Create user
+      user:
+        name: "node_exporter"
+        group: "node_exporter"
+        shell: "/bin/false"
+        system: true
+        state: present
+
+    - name: NODEEXPORTER - create service
+      template:
+        src: templates/node-exporter.j2
+        dest: /etc/systemd/system/node_exporter.service
+
+    - name: NODEEXPORTER - start service
+      service:
+        name: "node_exporter"
+        state: started
+
+    - name: NODEEXPORTER - enable service
+      service:
+        name: "node_exporter"
+        enabled: yes
+
+    - name: NODEEXPORTER - Remove temporary directory
+      file:
+        path: "{{ tmp_directory }}"
+        state: absent

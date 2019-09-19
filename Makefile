@@ -126,3 +126,6 @@ rundeck:
 
 chrome:
 	ansible-playbook chrome.yml
+
+nodeexporter:
+	ansible-playbook nodeexporter.yml

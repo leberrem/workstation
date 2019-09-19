@@ -26,6 +26,7 @@
 * Vagrant : `make vagrant`
 * Remmina : `make remmina`
 * Citrix : `make citrix`
+* node exporter : `make nodeexporter`
 
 ## Social tools
 
