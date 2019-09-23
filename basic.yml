@@ -77,3 +77,10 @@
           - jq
         state: present
 
+    - name: BASIC - install httpie
+      become: yes
+      apt:
+        name:
+          - httpie
+        state: present
+
