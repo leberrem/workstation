@@ -53,6 +53,7 @@
 * CURA : `make cura`
 * Bleachbit : `make bleachbit`
 * Kazam : `make kazam`
+* Stickynotes : `make stickynotes`
 
 ## Requirements
 

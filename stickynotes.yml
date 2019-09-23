@@ -1,0 +1,17 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: STICKYNOTES - add repository
+      apt_repository:
+        repo: ppa:umang/indicator-stickynotes
+        update_cache: true
+        state: present
+
+    - name: STICKYNOTES - install stickynotes
+      apt:
+        name: indicator-stickynotes
+        state: present
+

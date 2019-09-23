@@ -129,3 +129,6 @@ chrome:
 
 nodeexporter:
 	ansible-playbook nodeexporter.yml
+
+stickynotes:
+	ansible-playbook stickynotes.yml
