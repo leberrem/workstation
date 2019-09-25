@@ -132,3 +132,6 @@ nodeexporter:
 
 stickynotes:
 	ansible-playbook stickynotes.yml
+
+nodejs:
+	ansible-playbook nodejs.yml	

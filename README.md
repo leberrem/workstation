@@ -10,6 +10,7 @@
 * Robo3T : `make robo3t`
 * SQLDeveloper : `make sqldeveloper`
 * Chrome : `make chrome`
+* NodeJS : `make nodejs`
 
 ## Infrastructure tools
 

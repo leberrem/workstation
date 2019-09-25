@@ -1,0 +1,25 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: NODEJS - add YARN key
+      apt_key:
+        url: 'https://dl.yarnpkg.com/debian/pubkey.gpg'
+        state: present
+
+    - name: NODEJS - add YARN repo
+      apt_repository:
+        repo: deb https://dl.yarnpkg.com/debian/ stable main
+        state: present
+        update_cache: true
+
+    - name: NODEJS - install nodejs npm yarn
+      apt:
+        name: 
+         - nodejs
+         - npm
+         - yarn                  
+        state: present
+
