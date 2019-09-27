@@ -134,4 +134,7 @@ stickynotes:
 	ansible-playbook stickynotes.yml
 
 nodejs:
-	ansible-playbook nodejs.yml	
+	ansible-playbook nodejs.yml
+
+teamviewer:
+	ansible-playbook teamviewer.yml

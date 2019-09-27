@@ -28,6 +28,7 @@
 * Remmina : `make remmina`
 * Citrix : `make citrix`
 * node exporter : `make nodeexporter`
+* TeamViewer : `make teamviewer`
 
 ## Social tools
 

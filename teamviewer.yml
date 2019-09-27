@@ -1,0 +1,29 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    teamviewer_url: https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+    teamviewer_tmp: /tmp/teamviewer
+
+  tasks:
+
+    - name: TEAMVIEWER - Creates temporary directory
+      file:
+        path: "{{ teamviewer_tmp }}"
+        state: directory
+
+    - name: TEAMVIEWER - Download teamviewer
+      get_url:
+        url: "{{ teamviewer_url }}"
+        dest: "{{ teamviewer_tmp }}/teamviewer.deb"
+        force: yes
+
+    - name: TEAMVIEWER - Install teamviewer package
+      apt:
+        deb: "{{ teamviewer_tmp }}/teamviewer.deb"
+
+    - name: TEAMVIEWER - Remove temporary directory
+      file:
+        path: "{{ teamviewer_tmp }}"
+        state: absent
