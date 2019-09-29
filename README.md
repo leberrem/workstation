@@ -29,6 +29,7 @@
 * Citrix : `make citrix`
 * node exporter : `make nodeexporter`
 * TeamViewer : `make teamviewer`
+* BorgBackup : `make borg`
 
 ## Social tools
 

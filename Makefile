@@ -138,3 +138,6 @@ nodejs:
 
 teamviewer:
 	ansible-playbook teamviewer.yml
+
+borg:
+	ansible-playbook borgbackup.yml
