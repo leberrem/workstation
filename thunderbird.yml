@@ -3,7 +3,7 @@
   become: yes
 
   vars:
-    thunderbird_version: "68.0"
+    thunderbird_version: "68.1.1"
     thunderbird_url: "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/{{ thunderbird_version }}/linux-x86_64/fr/thunderbird-{{ thunderbird_version }}.tar.bz2"
     thunderbird_tmp: "/tmp/thunderbird"
 
