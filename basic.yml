@@ -84,3 +84,10 @@
           - httpie
         state: present
 
+    - name: BASIC - install dconf-editor
+      become: yes
+      apt:
+        name:
+          - dconf-editor
+        state: present
+
