@@ -6,8 +6,15 @@
     azure_tmp: /tmp/azure
     azcopy_name: azcopy_linux_amd64_10.2.1
     azcopy_url: https://azcopyvnext.azureedge.net/release20190703/{{ azcopy_name }}.tar.gz
+    storage_explorer_url: "https://download.microsoft.com/download/A/E/3/AE32C485-B62B-4437-92F7-8B6B2C48CB40/StorageExplorer-linux-x64.tar.gz"
 
   tasks:
+
+    - name: AZURE - Creates temporary directory
+      become: yes
+      file:
+        path: "{{ azure_tmp }}"
+        state: directory
 
     - name: AZURE - install cifs-utils
       apt:
@@ -49,12 +56,6 @@
         name: azure-cli
         state: present
 
-    - name: AZURE - Creates temporary directory
-      become: yes
-      file:
-        path: "{{ azure_tmp }}"
-        state: directory
-
     - name: AZURE - download azcopy
       get_url:
         url: "{{ azcopy_url }}"
@@ -73,6 +74,40 @@
         src: "/opt/{{ azcopy_name }}/azcopy"
         dest: "/usr/bin/azcopy"
         state: link
+
+    - name: AZURE - install dotnet core 2.2
+      apt:
+        name: dotnet-runtime-2.2
+        state: present
+
+    - name: AZURE - download StorageExplorer
+      get_url:
+        url: "{{ storage_explorer_url }}"
+        dest: "{{ azure_tmp }}/StorageExplorer.tar.gz"
+        force: yes
+
+    - name: AZURE - Creates StorageExplorer directory
+      become: yes
+      file:
+        path: "/opt/StorageExplorer"
+        state: directory
+
+    - name: AZURE - extract StorageExplorer
+      unarchive:
+        src: '{{ azure_tmp }}/StorageExplorer.tar.gz'
+        dest: /opt/StorageExplorer
+        copy: no
+
+    - name: AZURE - Copy StorageExplorer icon image
+      copy:
+        src: files/StorageExplorer.png
+        dest: /opt/StorageExplorer/icon.png
+
+    - name: AZURE - create StorageExplorer shortcut
+      become: no
+      template:
+        src: templates/StorageExplorer.j2
+        dest: ~/.local/share/applications/StorageExplorer.desktop
 
     - name: AZURE - Remove temporary directory
       become: yes
