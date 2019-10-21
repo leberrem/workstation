@@ -1,0 +1,35 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: GESTURES - get the username
+      become: false
+      command: whoami
+      register: whoami_output
+
+    - name: ZSH - install package
+      become: yes
+      apt:
+        name:
+          - curl
+          - zsh
+          - fonts-powerline
+        state: present
+
+    - name: ZSH - install oh-my-zsh
+      become: no
+      shell: 'sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+
+    - name: ZSH - modify theme
+      become: no
+      lineinfile:
+        path: ~/.zshrc
+        regexp: '^ZSH_THEME='
+        line: 'ZSH_THEME="agnoster"'
+
+    - name: ZSH - set zsh as default shell
+      become: yes
+      user:
+        name: "{{ whoami_output.stdout }}"
+        shell: /bin/zsh

@@ -141,3 +141,6 @@ teamviewer:
 
 borg:
 	ansible-playbook borgbackup.yml
+
+zsh:
+	ansible-playbook zsh.yml

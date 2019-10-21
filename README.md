@@ -41,6 +41,7 @@
 
 * PS1 : `make ps1`
 * Welcome message : `make welcome`
+* ZSH : `make zsh`
 * Gnome tweaks : `make tweak`
 * Basic packages : `make basic`
 * Terminator : `make terminator`
