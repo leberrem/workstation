@@ -10,4 +10,4 @@
 
     - name: REMMINA - Install remmina and plugins
       apt:
-        name: [ "remmina","remmina-plugin-rdp","remmina-plugin-secret","remmina-plugin-spice" ]
+        name: [ "remmina","remmina-plugin-rdp","remmina-plugin-secret","remmina-plugin-spice", "libfreerdp-plugins-standard" ]
