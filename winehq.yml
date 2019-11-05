@@ -19,5 +19,7 @@
     - name: WINEHQ - install package
       become: yes
       apt:
-        name: winehq-stable
+        name:
+          - winehq-stable
+          - winetricks
         state: present
