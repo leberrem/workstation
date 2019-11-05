@@ -144,3 +144,6 @@ borg:
 
 zsh:
 	ansible-playbook zsh.yml
+
+timeshift:
+	ansible-playbook timeshift.yml

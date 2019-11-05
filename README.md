@@ -30,6 +30,7 @@
 * node exporter : `make nodeexporter`
 * TeamViewer : `make teamviewer`
 * BorgBackup : `make borg`
+* Timeshift : `make timeshift`
 
 ## Social tools
 

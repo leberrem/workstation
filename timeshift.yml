@@ -1,0 +1,16 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: TIMESHIFT - add repository
+      become: yes
+      apt_repository:
+        repo: ppa:teejee2008/ppa
+        state: present
+
+    - name: TIMESHIFT - install package
+      become: yes
+      apt:
+        name: timeshift
+        state: present
