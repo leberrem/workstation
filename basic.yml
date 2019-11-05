@@ -33,12 +33,16 @@
           - git
         state: present
 
-    - name: BASIC - install rar
+    - name: BASIC - install archive application
       become: yes
       apt:
         name:
           - rar
           - unrar
+          - zip
+          - unzip
+          - p7zip-full
+          - p7zip-rar
         state: present
 
     - name: BASIC - install sushi
@@ -60,7 +64,7 @@
       apt:
         name:
           - samba
-        state: present        
+        state: present
 
     - name: BASIC - install openvpn
       become: yes
@@ -89,5 +93,12 @@
       apt:
         name:
           - dconf-editor
+        state: present
+
+    - name: BASIC - install ncdu
+      become: yes
+      apt:
+        name:
+          - ncdu
         state: present
 
