@@ -44,12 +44,19 @@
         - "https://github.com/zsh-users/zsh-autosuggestions"
         - "https://github.com/zsh-users/zsh-syntax-highlighting.git"
 
-    - name: ZSH - modify theme
+    - name: ZSH - modify options and theme
       become: no
       lineinfile:
         path: ~/.zshrc
-        regexp: '^ZSH_THEME='
-        line: 'ZSH_THEME="powerlevel9k/powerlevel9k"'
+        regexp: '^{{ item.key }}='
+        line: '{{ item.key }}={{ item.value }}'
+        state: present
+      with_items:
+        - { key: 'ZSH_THEME', value: '"powerlevel9k/powerlevel9k"' }
+        - { key: 'POWERLEVEL9K_LEFT_PROMPT_ELEMENTS', value: '(status context dir vcs newline)' }
+        - { key: 'POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS', value: '()' }
+        - { key: 'ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE', value: '"fg=#444444,bold,underline"' }
+        - { key: 'ZSH_AUTOSUGGEST_STRATEGY', value: '(history completion)' }
 
     - name: ZSH - set zsh as default shell
       become: yes
