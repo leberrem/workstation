@@ -57,19 +57,10 @@
         - { key: 'POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS', value: '()' }
         - { key: 'ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE', value: '"fg=#444444,bold,underline"' }
         - { key: 'ZSH_AUTOSUGGEST_STRATEGY', value: '(history completion)' }
+        - { key: 'plugins', value: '(git vscode docker terraform zsh-syntax-highlighting zsh-autosuggestions)' }
 
     - name: ZSH - set zsh as default shell
       become: yes
       user:
         name: "{{ whoami_output.stdout }}"
         shell: /bin/zsh
-
-      # TODO : update plugin list
-      # plugins=(
-      #   git
-      #   vscode
-      #   docker
-      #   terraform
-      #   zsh-syntax-highlighting
-      #   zsh-autosuggestions
-      # )
