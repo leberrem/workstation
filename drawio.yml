@@ -1,0 +1,30 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    drawio_version: "12.2.2"
+    drawio_url: "https://github.com/jgraph/drawio-desktop/releases/download/v{{ drawio_version }}/draw.io-amd64-{{ drawio_version }}.deb"
+    drawio_tmp: "/tmp/drawio"
+
+  tasks:
+
+    - name: DRAW.IO - Creates temporary directory
+      file:
+        path: "{{ drawio_tmp }}"
+        state: directory
+
+    - name: DRAW.IO - Download package
+      get_url:
+        url: "{{ drawio_url }}"
+        dest: "{{ drawio_tmp }}/drawio.deb"
+        force: yes
+
+    - name: DRAW.IO - Install package
+      apt:
+        deb: "{{ drawio_tmp }}/drawio.deb"
+
+    - name: DRAW.IO - Remove temporary directory
+      file:
+        path: "{{ drawio_tmp }}"
+        state: absent

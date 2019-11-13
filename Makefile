@@ -147,3 +147,6 @@ zsh:
 
 timeshift:
 	ansible-playbook timeshift.yml
+
+drawio:
+	ansible-playbook drawio.yml

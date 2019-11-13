@@ -31,6 +31,7 @@
 * TeamViewer : `make teamviewer`
 * BorgBackup : `make borg`
 * Timeshift : `make timeshift`
+* Draw.io : `make drawio`
 
 ## Social tools
 
