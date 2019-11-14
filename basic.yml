@@ -33,6 +33,13 @@
           - git
         state: present
 
+    - name: BASIC - install vim
+      become: yes
+      apt:
+        name:
+          - vim
+        state: present
+
     - name: BASIC - install archive application
       become: yes
       apt:
