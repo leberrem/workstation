@@ -9,4 +9,5 @@
         name:
           - python-openstackclient
           - python-novaclient
+          - python-neutronclient
 
