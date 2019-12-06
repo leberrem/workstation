@@ -11,6 +11,7 @@
 * SQLDeveloper : `make sqldeveloper`
 * Chrome : `make chrome`
 * NodeJS : `make nodejs`
+* Ngrok : `make ngrok`
 
 ## Infrastructure tools
 

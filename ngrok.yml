@@ -1,0 +1,25 @@
+- hosts: localhost
+  connection: local
+
+  vars:
+    ngrok_url: "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip"
+
+  tasks:
+
+    - name: NGROK - Download archive
+      get_url:
+        url: '{{ ngrok_url }}'
+        dest: '/tmp/ngrok.zip'
+        force: yes
+
+    - name: NGROK - Extract archive
+      become: yes
+      unarchive:
+        src: /tmp/ngrok.zip
+        dest: /usr/bin/
+        copy: no
+
+    - name: NGROK - Remove archive
+      file:
+        path: /tmp/ngrok.zip
+        state: absent

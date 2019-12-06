@@ -150,3 +150,6 @@ timeshift:
 
 drawio:
 	ansible-playbook drawio.yml
+
+ngrok:
+	ansible-playbook ngrok.yml
