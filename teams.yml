@@ -3,7 +3,8 @@
   become: yes
 
   vars:
-    teams_url: "https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v0.7.0/teams-for-linux_0.7.0_amd64.deb"
+    # teams_url: "https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v0.7.0/teams-for-linux_0.7.0_amd64.deb"
+    teams_url: "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb"
     teams_tmp: "/tmp/teams"
 
   tasks:
