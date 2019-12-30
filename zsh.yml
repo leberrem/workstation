@@ -17,10 +17,16 @@
           - fonts-powerline
         state: present
 
+    - name: ZSH - check previous install
+      become: no
+      stat:
+        path: ~/.oh-my-zsh
+      register: file_details
+
     - name: ZSH - install oh-my-zsh
       become: no
       shell: 'sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
-      ignore_errors: true
+      when: file_details.stat.exists == false and file_details.stat.isdir == false
 
     - name: ZSH - install theme
       become: no
