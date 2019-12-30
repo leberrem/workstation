@@ -26,7 +26,7 @@
     - name: ZSH - install oh-my-zsh
       become: no
       shell: 'sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
-      when: file_details.stat.exists == false and file_details.stat.isdir == false
+      when: file_details.stat.exists == false
 
     - name: ZSH - install theme
       become: no
