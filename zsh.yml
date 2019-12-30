@@ -57,7 +57,7 @@
         - { key: 'POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS', value: '()' }
         - { key: 'ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE', value: '"fg=#444444,bold,underline"' }
         - { key: 'ZSH_AUTOSUGGEST_STRATEGY', value: '(history completion)' }
-        - { key: 'plugins', value: '(git vscode docker terraform helm kubectl zsh-syntax-highlighting zsh-autosuggestions)' }
+        - { key: 'plugins', value: '(git vscode docker docker-compose terraform helm kubectl minikube httpie zsh-syntax-highlighting zsh-autosuggestions)' }
 
     - name: ZSH - add exception for make command completion
       become: no
