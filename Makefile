@@ -153,3 +153,6 @@ drawio:
 
 ngrok:
 	ansible-playbook ngrok.yml
+
+krita:
+	ansible-playbook krita.yml

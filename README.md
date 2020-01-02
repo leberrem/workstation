@@ -61,6 +61,7 @@
 * Bleachbit : `make bleachbit`
 * Kazam : `make kazam`
 * Stickynotes : `make stickynotes`
+* Krita : `make krita`
 
 ## Requirements
 

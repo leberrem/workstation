@@ -1,0 +1,21 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: KRITA - add krita repo
+      apt_repository:
+        repo: ppa:kritalime/ppa
+        state: present
+        update_cache: yes
+
+    - name: KRITA - install krita
+      apt:
+        name: krita
+        state: present
+
+    - name: KRITA - install krita langage pack
+      apt:
+        name: krita-l10n
+        state: present
