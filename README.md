@@ -1,4 +1,6 @@
-# Install tools on ubuntu workstation 18.04 & Elementary 5
+# Install tools with ansible
+
+*Test on ubuntu workstation 18.04 and Elementary 5*
 
 ## Developments tools
 
