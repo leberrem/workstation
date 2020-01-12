@@ -69,6 +69,7 @@
 
 ### Package
 
+* make : `sudo apt install make`
 * python : `sudo apt install python`
 * pip : `sudo apt install python-pip`
 * ansible : `sudo pip install ansible`
