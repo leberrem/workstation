@@ -29,7 +29,6 @@
 * Virtualbox : `make virtualbox`
 * Vagrant : `make vagrant`
 * Remmina : `make remmina`
-* Citrix : `make citrix`
 * node exporter : `make nodeexporter`
 * TeamViewer : `make teamviewer`
 * BorgBackup : `make borg`
@@ -64,6 +63,7 @@
 * Kazam : `make kazam`
 * Stickynotes : `make stickynotes`
 * Krita : `make krita`
+* clockify : `make clockify`
 
 ## Requirements
 

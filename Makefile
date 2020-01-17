@@ -118,9 +118,6 @@ bleachbit:
 kazam:
 	ansible-playbook kazam.yml
 
-citrix:
-	ansible-playbook citrix.yml
-
 rundeck:
 	ansible-playbook rundeck.yml
 
@@ -156,3 +153,6 @@ ngrok:
 
 krita:
 	ansible-playbook krita.yml
+
+clockify:
+	ansible-playbook clockify.yml

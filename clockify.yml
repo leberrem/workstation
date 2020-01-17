@@ -1,0 +1,30 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    clockify_url: "https://clockify-resources.s3.eu-central-1.amazonaws.com/downloads/Clockify_Setup.deb"
+    clockify_tmp: "/tmp/clockify"
+
+  tasks:
+
+    - name: CLOCKIFY - Creates temporary directory
+      file:
+        path: "{{ clockify_tmp }}"
+        state: directory
+
+    - name: CLOCKIFY - Download package
+      get_url:
+        url: "{{ clockify_url }}"
+        dest: "{{ clockify_tmp }}/clockify.deb"
+        validate_certs: no
+        force: yes
+
+    - name: CLOCKIFY - Install package
+      apt:
+        deb: "{{ clockify_tmp }}/clockify.deb"
+
+    - name: CLOCKIFY - Remove temporary directory
+      file:
+        path: "{{ clockify_tmp }}"
+        state: absent
