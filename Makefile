@@ -156,3 +156,6 @@ krita:
 
 clockify:
 	ansible-playbook clockify.yml
+
+ipscanner:
+	ansible-playbook ipscanner.yml

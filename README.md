@@ -34,6 +34,7 @@
 * BorgBackup : `make borg`
 * Timeshift : `make timeshift`
 * Draw.io : `make drawio`
+* IP Scanner : `make ipscanner`
 
 ## Social tools
 

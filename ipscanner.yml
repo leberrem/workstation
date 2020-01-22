@@ -1,0 +1,29 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    ipscanner_url: https://github.com/angryip/ipscan/releases/download/3.6.2/ipscan_3.6.2_amd64.deb
+    ipscanner_tmp: /tmp/ipscanner
+
+  tasks:
+
+    - name: IPSCANNER - Creates temporary directory
+      file:
+        path: "{{ ipscanner_tmp }}"
+        state: directory
+
+    - name: IPSCANNER - Download package
+      get_url:
+        url: "{{ ipscanner_url }}"
+        dest: "{{ ipscanner_tmp }}/ipscanner.deb"
+        force: yes
+
+    - name: IPSCANNER - Install ipscanner package
+      apt:
+        deb: "{{ ipscanner_tmp }}/ipscanner.deb"
+
+    - name: IPSCANNER - Remove temporary directory
+      file:
+        path: "{{ ipscanner_tmp }}"
+        state: absent
