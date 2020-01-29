@@ -14,6 +14,7 @@
 * Chrome : `make chrome`
 * NodeJS : `make nodejs`
 * Ngrok : `make ngrok`
+* Jmeter : `make jmeter`
 
 ## Infrastructure tools
 

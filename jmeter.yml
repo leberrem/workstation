@@ -1,0 +1,43 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    jmeter_version: "5.2.1"
+    jmeter_url: "http://miroir.univ-lorraine.fr/apache//jmeter/binaries/apache-jmeter-{{ jmeter_version }}.tgz"
+    jmeter_tmp: "/tmp/jmeter"
+
+  tasks:
+
+    - name: JMETER - install JAVA 11
+      package:
+        name: openjdk-11-jdk
+        state: present
+
+    - name: JMETER - Creates temporary directory
+      file:
+        path: "{{ jmeter_tmp }}"
+        state: directory
+
+    - name: JMETER - Download archive
+      get_url:
+        url: "{{ jmeter_url }}"
+        dest: "{{ jmeter_tmp }}/jmeter.tgz"
+        force: yes
+
+    - name: JMETER - Extract archive
+      unarchive:
+        src: "{{ jmeter_tmp }}/jmeter.tgz"
+        dest: /opt
+        remote_src: no
+
+    - name: JMETER - create link
+      file:
+        src: /opt/apache-jmeter-{{ jmeter_version }}/bin/jmeter
+        dest: /usr/bin/jmeter
+        state: link
+
+    - name: JMETER - Remove temporary directory
+      file:
+        path: "{{ jmeter_tmp }}"
+        state: absent

@@ -159,3 +159,6 @@ clockify:
 
 ipscanner:
 	ansible-playbook ipscanner.yml
+
+jmeter:
+	ansible-playbook jmeter.yml
