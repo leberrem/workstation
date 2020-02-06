@@ -3,7 +3,7 @@
   become: yes
 
   vars:
-    dive_url: https://github.com/wagoodman/dive/releases/download/v0.7.2/dive_0.7.2_linux_amd64.deb
+    dive_url: https://github.com/wagoodman/dive/releases/download/v0.9.1/dive_0.9.1_linux_amd64.deb
     dive_tmp: /tmp/dive
 
   tasks:
