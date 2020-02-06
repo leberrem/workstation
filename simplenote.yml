@@ -3,7 +3,8 @@
   become: yes
 
   vars:
-    simplenote_url: "https://github.com/Automattic/simplenote-electron/releases/download/v1.6.0/Simplenote-linux-1.6.0-amd64.deb"
+    simplenote_version: 1.14.0
+    simplenote_url: "https://github.com/Automattic/simplenote-electron/releases/download/v{{ simplenote_version }}/Simplenote-linux-{{ simplenote_version }}-amd64.deb"
     simplenote_tmp: "/tmp/simplenote"
 
   tasks:
