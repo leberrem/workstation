@@ -4,6 +4,11 @@
 
   tasks:
 
+    - name: TYPORA - install pandoc
+      package:
+        name: pandoc
+        state: present
+
     - name: TYPORA - add key
       become: yes
       apt_key:
