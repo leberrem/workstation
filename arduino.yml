@@ -3,7 +3,7 @@
   become: yes
 
   vars:
-    arduino_version: "1.8.9"
+    arduino_version: "1.8.11"
     arduino_url: "https://downloads.arduino.cc/arduino-{{ arduino_version }}-linux64.tar.xz"
     arduino_tmp: "/tmp/arduino"
 
