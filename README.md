@@ -19,6 +19,7 @@
 ## Infrastructure tools
 
 * Terraform : `make terraform`
+* Packer : `make packer`
 * AWS-cli : `make awscli`
 * AZURE-cli : `make azure`
 * Rundeck-cli : `make rundeck`

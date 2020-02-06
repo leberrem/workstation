@@ -1,0 +1,52 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: PACKER - install dependencies (apt)
+      become: yes
+      apt:
+        name:
+          - unzip
+        state: present
+
+    - name: PACKER - install dependencies (pip)
+      become: yes
+      pip:
+        name:
+          - jmespath
+
+    - name: PACKER - get latest packer version id
+      uri:
+        url: 'https://checkpoint-api.hashicorp.com/v1/check/packer'
+        method: GET
+        status_code: 200
+        timeout: 10
+      register: release
+
+    - set_fact:
+        packer_version: "{{ release.json | json_query('current_version') }}"
+
+    - debug:
+        msg: "packer latest version : {{ packer_version }}"
+
+    - name: PACKER - Download archive
+      get_url:
+        url: 'https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_linux_amd64.zip'
+        dest: '/tmp/packer-{{ packer_version }}.zip'
+        force: yes
+
+    - name: PACKER - Extract archive
+      become: yes
+      unarchive:
+        src: /tmp/packer-{{ packer_version }}.zip
+        dest: /usr/bin/
+        copy: no
+
+    - name: PACKER - Remove archive
+      file:
+        path: /tmp/packer-{{ packer_version }}.zip
+        state: absent
+
+    - name: PACKER - install packer autocomplete
+      shell: packer -autocomplete-install

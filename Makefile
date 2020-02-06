@@ -162,3 +162,6 @@ ipscanner:
 
 jmeter:
 	ansible-playbook jmeter.yml
+
+packer:
+	ansible-playbook packer.yml
