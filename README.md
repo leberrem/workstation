@@ -45,6 +45,7 @@
 * Teams : `make teams`
 
 ## Command line tools
+
 * PS1 : `make ps1`
 * Welcome message : `make welcome`
 * ZSH : `make zsh`
