@@ -53,8 +53,8 @@
 
 ## Others tools
 
-* Gnome tweaks : `make tweak`
 * Basic packages : `make basic`
+* Gnome tweaks : `make tweak`
 * Simplenote : `make simplenote`
 * Typora : `make typora`
 * Openboard : `make openboard`
@@ -85,7 +85,7 @@
 `sudo visudo`
 
 ```shell
-<$USER>   ALL=(ALL) NOPASSWD:ALL
+<current user>   ALL=(ALL) NOPASSWD:ALL
 ```
 
 ## Download ansible roles
