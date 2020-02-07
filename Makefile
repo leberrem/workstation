@@ -165,3 +165,6 @@ jmeter:
 
 packer:
 	ansible-playbook packer.yml
+
+tldr:
+	ansible-playbook tldr.yml

@@ -1,0 +1,32 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: TLDR - add YARN key
+      apt_key:
+        url: 'https://dl.yarnpkg.com/debian/pubkey.gpg'
+        state: present
+
+    - name: TLDR - add YARN repo
+      apt_repository:
+        repo: deb https://dl.yarnpkg.com/debian/ stable main
+        state: present
+        update_cache: true
+
+    - name: TLDR - install nodejs
+      apt:
+        name:
+         - nodejs
+         - npm
+         - yarn
+        state: present
+
+    - name: TLDR - install tldr module
+      npm:
+        name: tldr
+        global: yes
+        state: present
+
+

@@ -1,6 +1,9 @@
 - hosts: localhost
   connection: local
 
+  vars:
+    packer_version: 1.4.5
+
   tasks:
 
     - name: PACKER - install dependencies (apt)
@@ -16,16 +19,16 @@
         name:
           - jmespath
 
-    - name: PACKER - get latest packer version id
-      uri:
-        url: 'https://checkpoint-api.hashicorp.com/v1/check/packer'
-        method: GET
-        status_code: 200
-        timeout: 10
-      register: release
+    # - name: PACKER - get latest packer version id
+    #   uri:
+    #     url: 'https://checkpoint-api.hashicorp.com/v1/check/packer'
+    #     method: GET
+    #     status_code: 200
+    #     timeout: 10
+    #   register: release
 
-    - set_fact:
-        packer_version: "{{ release.json | json_query('current_version') }}"
+    # - set_fact:
+    #     packer_version: "{{ release.json | json_query('current_version') }}"
 
     - debug:
         msg: "packer latest version : {{ packer_version }}"
@@ -50,3 +53,18 @@
 
     - name: PACKER - install packer autocomplete
       shell: packer -autocomplete-install
+      ignore_errors: true
+
+    - name: PACKER - create plugins directory
+      file:
+        path: "~/.packer.d/plugins"
+        state: directory
+
+    - name: PACKER - install plugins
+      get_url:
+        url: "{{ item }}"
+        dest: "~/.packer.d/plugins/{{ item | basename }}"
+        mode: '0755'
+      with_items:
+        - "https://github.com/jetbrains-infra/packer-builder-vsphere/releases/download/v2.3/packer-builder-vsphere-clone.linux"
+        - "https://github.com/jetbrains-infra/packer-builder-vsphere/releases/download/v2.3/packer-builder-vsphere-iso.linux"

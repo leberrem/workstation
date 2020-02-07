@@ -44,14 +44,17 @@
 * Discord : `make discord`
 * Teams : `make teams`
 
-## Others tools
-
+## Command line tools
 * PS1 : `make ps1`
 * Welcome message : `make welcome`
 * ZSH : `make zsh`
+* TLDR : `make tldr`
+* Terminator : `make terminator`
+
+## Others tools
+
 * Gnome tweaks : `make tweak`
 * Basic packages : `make basic`
-* Terminator : `make terminator`
 * Simplenote : `make simplenote`
 * Typora : `make typora`
 * Openboard : `make openboard`
