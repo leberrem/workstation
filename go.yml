@@ -1,18 +1,39 @@
 - hosts: localhost
   connection: local
 
+  vars:
+   go_version: "1.13.7"
+   go_url: "https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz"
+   go_tmp: "/tmp/go"
+
   tasks:
 
-    - name: GO - add repository
+    - name: GO - Creates temporary directory
+      file:
+        path: "{{ go_tmp }}"
+        state: directory
+
+    - name: GO - Download archive
+      get_url:
+        url: "{{ go_url }}"
+        dest: "{{ go_tmp }}/go.tgz"
+        force: yes
+
+    - name: GO - Extract archive
       become: yes
-      apt_repository:
-        repo: ppa:longsleep/golang-backports
+      unarchive:
+        src: "{{ go_tmp }}/go.tgz"
+        dest: /usr/local
+        remote_src: no
+
+    - name: GO - add to path
+      become: yes
+      lineinfile:
+        path: "/etc/profile"
+        line: "export PATH=$PATH:/usr/local/go/bin"
         state: present
 
-    - name: GO - install package
-      become: yes
-      apt:
-        name:
-          - golang-go
-        state: present
-        update_cache: yes
+    - name: GO - Remove temporary directory
+      file:
+        path: "{{ go_tmp }}"
+        state: absent
