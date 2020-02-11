@@ -15,6 +15,7 @@
 * NodeJS : `make nodejs`
 * Ngrok : `make ngrok`
 * Jmeter : `make jmeter`
+* Go : `make go`
 
 ## Infrastructure tools
 

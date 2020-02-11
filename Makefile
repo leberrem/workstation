@@ -168,3 +168,6 @@ packer:
 
 tldr:
 	ansible-playbook tldr.yml
+
+go:
+	ansible-playbook go.yml
