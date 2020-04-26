@@ -171,3 +171,6 @@ tldr:
 
 go:
 	ansible-playbook go.yml
+
+gitkraken:
+	ansible-playbook gitkraken.yml

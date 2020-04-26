@@ -1,0 +1,29 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    gitkraken_url: https://release.gitkraken.com/linux/gitkraken-amd64.deb
+    gitkraken_tmp: /tmp/gitkraken
+
+  tasks:
+
+    - name: SLACK - Creates temporary directory
+      file:
+        path: "{{ gitkraken_tmp }}"
+        state: directory
+
+    - name: SLACK - Download package
+      get_url:
+        url: "{{ gitkraken_url }}"
+        dest: "{{ gitkraken_tmp }}/gitkraken.deb"
+        force: yes
+
+    - name: SLACK - Install package
+      apt:
+        deb: "{{ gitkraken_tmp }}/gitkraken.deb"
+
+    - name: SLACK - Remove temporary directory
+      file:
+        path: "{{ gitkraken_tmp }}"
+        state: absent

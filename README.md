@@ -16,6 +16,7 @@
 * Ngrok : `make ngrok`
 * Jmeter : `make jmeter`
 * Go : `make go`
+* GIT Kraken : `make gitkraken`
 
 ## Infrastructure tools
 
