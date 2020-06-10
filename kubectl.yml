@@ -2,7 +2,18 @@
   connection: local
   become: yes
 
+  vars:
+    kubectx_url: https://github.com/ahmetb/kubectx/releases/download/v0.9.0/kubectx_v0.9.0_linux_x86_64.tar.gz
+    kubens_url: https://github.com/ahmetb/kubectx/releases/download/v0.9.0/kubens_v0.9.0_linux_x86_64.tar.gz
+    kubectx_dir: /opt/kubectx
+    kubectx_git: https://github.com/ahmetb/kubectx.git
+
   tasks:
+
+    - name: KUBECTL - get the username
+      become: false
+      command: whoami
+      register: whoami_output
 
     - name: KUBECTL - add key
       apt_key:
@@ -27,3 +38,79 @@
 
     - name: KUBECTL - activate auto-completion for kubectl
       shell: kubectl completion bash >/etc/bash_completion.d/kubectl
+
+    - name: KUBCTL - create kubectx directory
+      file:
+        path: "{{ kubectx_dir }}"
+        state: directory
+
+    - name: KUBECTL - download and extract kubectx and kubens
+      unarchive:
+        src: "{{ item }}"
+        dest: "{{ kubectx_dir }}"
+        remote_src: yes
+      with_items:
+        - "{{ kubectx_url }}"
+        - "{{ kubens_url }}"
+
+    - name: KUBECTL - Make kubectx and kubens executable
+      file:
+        path: "{{ kubectx_dir }}/{{ item }}"
+        mode: 0755
+      with_items:
+        - "kubectx"
+        - "kubens"
+
+    - name: KUBECTL - Create kubectx and kubens link
+      file:
+        src: "{{ kubectx_dir }}/{{ item }}"
+        dest: "/usr/local/bin/{{ item }}"
+        state: link
+      with_items:
+        - "kubectx"
+        - "kubens"
+
+    - name: KUBECTL - clone kubectx project
+      git:
+        repo: "{{ kubectx_git }}"
+        dest: "{{ kubectx_dir }}/git"
+
+    - name: KUBECTL - check OH-MY-ZSH
+      stat:
+        path: "/home/{{ whoami_output.stdout }}/.oh-my-zsh"
+      register: ohmyzsh
+
+    - block:
+
+      - name: KUBECTL - create ZSH completions directory
+        become: false
+        file:
+          path: /home/{{ whoami_output.stdout }}/.oh-my-zsh/completions
+          state: directory
+          mode: 0755
+
+      - name: KUBECTL - Create kubectx and kubens ZSH completion link
+        become: false
+        file:
+          src: "{{ kubectx_dir }}/git/completion/{{ item }}.zsh"
+          dest: "/home/{{ whoami_output.stdout }}/.oh-my-zsh/completions/_{{ item }}.zsh"
+          state: link
+        with_items:
+          - "kubectx"
+          - "kubens"
+
+      when: ohmyzsh.stat.isdir is defined and ohmyzsh.stat.isdir
+
+    - name: KUBECTL - get bash completion directory
+      shell: >-
+        pkg-config --variable=completionsdir bash-completion
+      register: completionsdir
+
+    - name: KUBECTL - Create kubectx and kubens bash completion link
+      file:
+        src: "{{ kubectx_dir }}/git/completion/{{ item }}.bash"
+        dest: "{{ completionsdir.stdout }}/{{ item }}"
+        state: link
+      with_items:
+        - "kubectx"
+        - "kubens"
