@@ -59,8 +59,13 @@
         state: present
       with_items:
         - { key: 'ZSH_THEME', value: '"powerlevel9k/powerlevel9k"' }
-        - { key: 'POWERLEVEL9K_LEFT_PROMPT_ELEMENTS', value: '(status context dir vcs newline)' }
-        - { key: 'POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS', value: '()' }
+        - { key: 'POWERLEVEL9K_LEFT_PROMPT_ELEMENTS', value: '(host ssh root_indicator dir dir_writable vcs)' }
+        - { key: 'POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS', value: '(command_execution_time status background_jobs disk_usage ram ip time)' }
+        - { key: 'POWERLEVEL9K_PROMPT_ON_NEWLINE', value: 'true' }
+        - { key: 'POWERLEVEL9K_PROMPT_ADD_NEWLINE', value: 'true' }
+        - { key: 'POWERLEVEL9K_SHORTEN_DIR_LENGTH', value: '2' }
+        - { key: 'POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX', value: '"%F{blue}\u256D\u2500%f"' }
+        - { key: 'POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX', value: '"%F{blue}\u2570\u27A4%f "' }
         - { key: 'ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE', value: '"fg=#444444,bold,underline"' }
         - { key: 'ZSH_AUTOSUGGEST_STRATEGY', value: '(history completion)' }
         - { key: 'plugins', value: '(git vscode docker docker-compose terraform helm kubectl minikube httpie zsh-syntax-highlighting zsh-autosuggestions autojump)' }
