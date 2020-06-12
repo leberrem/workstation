@@ -109,3 +109,9 @@
           - ncdu
         state: present
 
+    - name: BASIC - install htop
+      become: yes
+      apt:
+        name:
+          - htop
+        state: present
