@@ -37,11 +37,11 @@
           - openresolv
           # jq
           - jq
-          #  httpie
+          # httpie
           - httpie
-          #  dconf-editor
+          # dconf-editor
           - dconf-editor
-          #  ncdu
+          # ncdu
           - ncdu
           # htop
           - htop
