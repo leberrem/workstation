@@ -1,0 +1,43 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.list.smoothScrolling": true,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.tree.indent": 16,
+    "workbench.colorTheme": "Dracula",
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "editor.tabSize": 2,
+    "editor.smoothScrolling": true,
+    "editor.cursorSmoothCaretAnimation": true,
+    "window.zoomLevel": 1,
+    "terminal.integrated.fontFamily": "Menlo for Powerline",
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.pythonPath": "/usr/bin/python",
+    "breadcrumbs.enabled": true,
+    "[ini]": {},
+    "[ansible]": {
+        "editor.detectIndentation": false,
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.associations": {
+        // Ansible
+        // "*.yml": "ansible",
+        "**/defaults/**/*.yml": "jinja-yaml",
+        "**/group_vars/**/*": "jinja-yaml",
+        "**/host_vars/**/*": "jinja-yaml",
+        "**/vars/**/*.yml": "jinja-yaml",
+        "**/tasks/**/*.yml": "ansible",
+        "**/handlers/*.yml": "ansible",
+        "**/meta/*.yml": "ansible",
+        "**/roles/**/*.yml": "ansible",
+        "**/playbooks/**/*.yml": "ansible",
+        "**/ansible/**/hosts": "ini",
+        "**/ansible/**/inventory": "ini",
+        "ansible.cfg": "ini"
+    },
+    "C_Cpp.updateChannel": "Insiders"
+}

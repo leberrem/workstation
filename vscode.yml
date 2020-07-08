@@ -1,7 +1,12 @@
 - hosts: localhost
   connection: local
+  become: false
 
   tasks:
+
+    - name: GESTURES - get the username
+      command: whoami
+      register: whoami_output
 
     - name: VSCODE - install dependencies
       become: yes
@@ -41,44 +46,24 @@
         - ms-azuretools.vscode-docker
         - vscoss.vscode-ansible
         - rupisaini.vscode-ansible-linter
-        - mauve.terraform
+        - HashiCorp.terraform
         - samuelcolvin.jinjahtml
         - ms-vscode.powershell
         - DavidAnson.vscode-markdownlint
         - Mikael.Angular-BeastCode
+        - dracula-theme.theme-dracula
+        - ms-vsliveshare.vsliveshare
+        - bmarkovic.haproxy
+        - golang.go
+        - marp-team.marp-vscode
 
-# TODO configuration
-# {
-#     "workbench.startupEditor": "newUntitledFile",
-#     "git.autofetch": true,
-#     "python.linting.pylintEnabled": true,
-#     "python.linting.enabled": true,
-#     "python.pythonPath": "/usr/bin/python",
-#     "workbench.tree.renderIndentGuides": "always",
-#     "workbench.tree.indent": 16,
-#     "terminal.integrated.shell.linux": "/bin/bash"
-# }
-#
-# https://selivan.github.io/2018/09/27/vscode-ansible-files-open-right-syntax.html
-# "files.associations": {
-#     // Ansible
-#     "**/defaults/**/*.yml": "jinja-yaml",
-#     "**/group_vars/**/*": "jinja-yaml",
-#     "**/host_vars/**/*": "jinja-yaml",
-#     "**/vars/**/*.yml": "jinja-yaml",
-#     "**/tasks/**/*.yml": "ansible",
-#     "**/handlers/*.yml": "ansible",
-#     "**/meta/*.yml": "ansible",
-#     "**/roles/**/*.yml": "ansible",
-#     "**/playbooks/**/*.yml": "ansible",
-#     "**/ansible/**/hosts": "ini",
-#     "**/ansible/**/inventory": "ini",
-#     "ansible.cfg": "ini",
-# },
+    - name: VSCODE - create configuration directory
+      file:
+        path: "/home/{{ whoami_output.stdout }}/.config/Code/User"
+        state: directory
 
-# "[ansible]": {
-#     "editor.detectIndentation": false,
-#     "editor.tabSize": 2,
-#     "editor.insertSpaces": true
-# },
-        
+    - name: VSCODE - default user configuration
+      become: no
+      template:
+        src: templates/settings.json.j2
+        dest: "/home/{{ whoami_output.stdout }}/.config/Code/User/settings.json"
