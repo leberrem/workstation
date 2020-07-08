@@ -3,115 +3,48 @@
 
   tasks:
 
-    - name: BASIC - install aptitude
+    - name: BASIC - install bascis
       become: yes
       apt:
         name:
+          # aptitude
           - aptitude
-        state: present
-
-    - name: BASIC - install codecs
-      become: yes
-      apt:
-        name:
+          # codecs
           - ubuntu-restricted-extras
-        state: present
-
-    - name: BASIC - install network tools
-      become: yes
-      apt:
-        name:
+          # network tools
           - curl
           - wget
           - net-tools
-        state: present
-
-    - name: BASIC - install git
-      become: yes
-      apt:
-        name:
+          # git
           - git
-        state: present
-
-    - name: BASIC - install vim
-      become: yes
-      apt:
-        name:
+          # vim
           - vim
-        state: present
-
-    - name: BASIC - install archive application
-      become: yes
-      apt:
-        name:
+          # archive application
           - rar
           - unrar
           - zip
           - unzip
           - p7zip-full
           - p7zip-rar
-        state: present
-
-    - name: BASIC - install sushi
-      become: yes
-      apt:
-        name:
+          # sushi
           - gnome-sushi
-        state: present
-
-    - name: BASIC - install vlc
-      become: yes
-      apt:
-        name:
+          #  vlc
           - vlc
-        state: present
-
-    - name: BASIC - install samba
-      become: yes
-      apt:
-        name:
+          # samba
           - samba
-        state: present
-
-    - name: BASIC - install openvpn
-      become: yes
-      apt:
-        name:
+          # openvpn
           - openvpn
           - openresolv
-        state: present
-
-    - name: BASIC - install jq
-      become: yes
-      apt:
-        name:
+          # jq
           - jq
-        state: present
-
-    - name: BASIC - install httpie
-      become: yes
-      apt:
-        name:
+          #  httpie
           - httpie
-        state: present
-
-    - name: BASIC - install dconf-editor
-      become: yes
-      apt:
-        name:
+          #  dconf-editor
           - dconf-editor
-        state: present
-
-    - name: BASIC - install ncdu
-      become: yes
-      apt:
-        name:
+          #  ncdu
           - ncdu
-        state: present
-
-    - name: BASIC - install htop
-      become: yes
-      apt:
-        name:
+          # htop
           - htop
+          # direnv
+          - direnv
         state: present
