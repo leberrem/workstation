@@ -20,14 +20,14 @@
     - name: VIRTUALBOX - add repository
       become: yes
       apt_repository:
-        repo: deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic contrib
+        repo: deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian focal contrib
         filename: virtualbox
         state: present
 
     - name: VIRTUALBOX - install package
       become: yes
       apt:
-        name: ["virtualbox-6.0"]
+        name: ["virtualbox-6.1"]
         state: present
 
     - name: VIRTUALBOX - add user to group vboxusers & disk
