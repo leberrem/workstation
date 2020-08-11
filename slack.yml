@@ -3,7 +3,7 @@
   become: yes
 
   vars:
-    slack_url: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
+    slack_url: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.8.0-amd64.deb
     slack_tmp: /tmp/slack
 
   tasks:
