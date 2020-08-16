@@ -3,7 +3,7 @@
   become: yes
 
   vars:
-    drawio_version: "12.2.2"
+    drawio_version: "13.6.2"
     drawio_url: "https://github.com/jgraph/drawio-desktop/releases/download/v{{ drawio_version }}/draw.io-amd64-{{ drawio_version }}.deb"
     drawio_tmp: "/tmp/drawio"
 
