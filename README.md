@@ -1,6 +1,6 @@
 # Install tools with ansible
 
-*Test on ubuntu workstation 18.04 and Elementary 5*
+*Test on ubuntu workstation 18.04, 19.10, 20.04 and Elementary 5*
 
 ## Developments tools
 
