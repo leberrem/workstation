@@ -55,7 +55,7 @@
       with_items:
         - { key: 'ZSH_THEME', value: '"powerlevel9k/powerlevel9k"' }
         - { key: 'POWERLEVEL9K_LEFT_PROMPT_ELEMENTS', value: '(host ssh root_indicator dir dir_writable vcs)' }
-        - { key: 'POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS', value: '(command_execution_time status background_jobs disk_usage ram ip time)' }
+        - { key: 'POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS', value: '(command_execution_time status background_jobs disk_usage ram time)' }
         - { key: 'POWERLEVEL9K_PROMPT_ON_NEWLINE', value: 'true' }
         - { key: 'POWERLEVEL9K_PROMPT_ADD_NEWLINE', value: 'true' }
         - { key: 'POWERLEVEL9K_SHORTEN_DIR_LENGTH', value: '2' }
