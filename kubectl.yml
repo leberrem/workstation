@@ -3,10 +3,8 @@
   become: yes
 
   vars:
-    kubectx_url: https://github.com/ahmetb/kubectx/releases/download/v0.9.0/kubectx_v0.9.0_linux_x86_64.tar.gz
-    kubens_url: https://github.com/ahmetb/kubectx/releases/download/v0.9.0/kubens_v0.9.0_linux_x86_64.tar.gz
+    kubectx_project: ahmetb/kubectx
     kubectx_dir: /opt/kubectx
-    kubectx_git: https://github.com/ahmetb/kubectx.git
 
   tasks:
 
@@ -44,14 +42,24 @@
         path: "{{ kubectx_dir }}"
         state: directory
 
-    - name: KUBECTL - download and extract kubectx and kubens
+    - name: KUBECTL - Get latest release
+      uri:
+        url: "https://api.github.com/repos/{{ kubectx_project }}/releases/latest"
+        return_content: yes
+      register: kubectx_release
+
+    - name: KUBECTL - View latest release
+      debug:
+        msg: "{{ kubectx_release.json.tag_name }}"
+
+    - name: KUBECTL - Download and extract kubectx and kubens
       unarchive:
         src: "{{ item }}"
         dest: "{{ kubectx_dir }}"
         remote_src: yes
       with_items:
-        - "{{ kubectx_url }}"
-        - "{{ kubens_url }}"
+        - "https://github.com/{{ kubectx_project }}/releases/download/{{ kubectx_release.json.tag_name }}/kubectx_{{ kubectx_release.json.tag_name }}_linux_x86_64.tar.gz"
+        - "https://github.com/{{ kubectx_project }}/releases/download/{{ kubectx_release.json.tag_name }}/kubens_{{ kubectx_release.json.tag_name }}_linux_x86_64.tar.gz"
 
     - name: KUBECTL - Make kubectx and kubens executable
       file:
@@ -72,8 +80,8 @@
 
     - name: KUBECTL - clone kubectx project
       git:
-        repo: "{{ kubectx_git }}"
-        dest: "{{ kubectx_dir }}/git"
+        repo: "https://github.com/{{ kubectx_project }}.git"
+        dest: "https://github.com/{{ kubectx_project }}.git/git"
 
     - name: KUBECTL - check OH-MY-ZSH
       stat:
