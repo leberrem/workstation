@@ -3,8 +3,7 @@
   become: no
 
   vars:
-    - etcher_version: 1.5.102
-    - etcher_url: "https://github.com/balena-io/etcher/releases/download/v{{ etcher_version }}/balena-etcher-electron-{{ etcher_version }}-linux-x64.zip"
+    - etcher_project: balena-io/etcher
     - etcher_dir: "/opt/etcher"
 
   tasks:
@@ -15,10 +14,20 @@
         path: "{{ etcher_dir }}"
         state: directory
 
+    - name: ETCHER - Get latest release
+      uri:
+        url: "https://api.github.com/repos/{{ etcher_project }}/releases/latest"
+        return_content: yes
+      register: etcher_release
+
+    - name: ETCHER - View latest release
+      debug:
+        msg: "{{ etcher_release.json.tag_name }}"
+
     - name: ETCHER - Download and extract application
       become: yes
       unarchive:
-        src: "{{ etcher_url }}"
+        src: "https://github.com/{{ etcher_project }}/releases/download/{{ etcher_release.json.tag_name }}/balena-etcher-electron-{{ etcher_release.json.tag_name | regex_replace('^v') }}-linux-x64.zip"
         dest: "{{ etcher_dir }}"
         remote_src: yes
 
@@ -31,7 +40,7 @@
     - name: ETCHER - Create symbolic link
       become: yes
       file:
-        src: "/opt/etcher/balenaEtcher-{{ etcher_version }}-x64.AppImage"
+        src: "/opt/etcher/balenaEtcher-{{ etcher_release.json.tag_name | regex_replace('^v')  }}-x64.AppImage"
         dest: "/usr/bin/balenaEtcher"
         state: link
 
