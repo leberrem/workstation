@@ -3,7 +3,7 @@
   become: yes
 
   vars:
-    vagrant_version: 2.2.7
+    vagrant_version: 2.2.10
     vagrant_url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_linux_amd64.zip"
     vagrant_tmp: /tmp/vagrant
 
