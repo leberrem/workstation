@@ -2,7 +2,7 @@
   connection: local
 
   vars:
-   go_version: "1.13.7"
+   go_version: "1.15.2"
    go_url: "https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz"
    go_tmp: "/tmp/go"
 
