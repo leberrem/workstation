@@ -73,6 +73,7 @@
 * Stickynotes : `make stickynotes`
 * Krita : `make krita`
 * clockify : `make clockify`
+* Adobe Reader : `make adobereader`
 
 ## Requirements
 
