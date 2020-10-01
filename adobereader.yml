@@ -1,0 +1,38 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    adobe_version: "1.8.11"
+    adobe_url: "ftp://ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb"
+    adobe_tmp: "/tmp/adobe"
+
+  tasks:
+
+    - name: adobe - install prereqs
+      apt:
+        name: ['libxml2:i386',
+              'libcanberra-gtk-module:i386',
+              'gtk2-engines-murrine:i386',
+              'libatk-adaptor:i386']
+        state: present
+
+    - name: adobe - Creates temporary directory
+      file:
+        path: "{{ adobe_tmp }}"
+        state: directory
+
+    - name: adobe - Download archive
+      get_url:
+        url: "{{ adobe_url }}"
+        dest: "{{ adobe_tmp }}/adobe.deb"
+        force: yes
+
+    - name: adobe - Install package
+      apt:
+        deb: "{{ adobe_tmp }}/adobe.deb"
+
+    - name: adobe - Remove temporary directory
+      file:
+        path: "{{ adobe_tmp }}"
+        state: absent

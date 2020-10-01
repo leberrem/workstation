@@ -174,3 +174,6 @@ go:
 
 gitkraken:
 	ansible-playbook gitkraken.yml
+
+adobereader:
+	ansible-playbook adobereader.yml
