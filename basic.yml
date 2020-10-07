@@ -48,3 +48,21 @@
           # direnv
           - direnv
         state: present
+
+    - name: Set vim editor for git
+      git_config:
+        name: core.editor
+        scope: global
+        value: vim
+
+    - name: Add color config for git
+      git_config:
+        name: alias.ci
+        scope: global
+        value: auto
+      with_items:
+        - color.branch
+        - color.diff
+        - color.interactive
+        - color.status
+        - color.grep
