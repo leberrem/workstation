@@ -49,13 +49,13 @@
           - direnv
         state: present
 
-    - name: Set vim editor for git
+    - name: BASIC - Set vim editor for git
       git_config:
         name: core.editor
         scope: global
         value: vim
 
-    - name: Add color config for git
+    - name: BASIC - Add color config for git
       git_config:
         name: alias.ci
         scope: global
