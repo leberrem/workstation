@@ -63,7 +63,7 @@
 
     - name: BASIC - Add color config for git
       git_config:
-        name: alias.ci
+        name: "{{ item }}"
         scope: global
         value: auto
       with_items:
