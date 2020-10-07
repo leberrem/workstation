@@ -55,6 +55,12 @@
         scope: global
         value: vim
 
+    - name: BASIC - Store credential for git
+      git_config:
+        name: credential.helper
+        scope: global
+        value: store
+
     - name: BASIC - Add color config for git
       git_config:
         name: alias.ci
