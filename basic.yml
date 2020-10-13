@@ -15,9 +15,10 @@
           - curl
           - wget
           - net-tools
-          # git
+          - httpie
+          # git (source control)
           - git
-          # vim
+          # vim (editor)
           - vim
           # archive application
           - rar
@@ -28,25 +29,25 @@
           - p7zip-rar
           # sushi
           - gnome-sushi
-          #  vlc
+          #  vlc (media player)
           - vlc
-          # samba
+          # samba (shared ressources)
           - samba
-          # openvpn
+          # openvpn (openVPN client)
           - openvpn
           - openresolv
-          # jq
+          # jq (JSON Query)
           - jq
-          # httpie
-          - httpie
           # dconf-editor
           - dconf-editor
-          # ncdu
+          # ncdu (disk usage)
           - ncdu
-          # htop
+          # htop (ressources)
           - htop
-          # direnv
+          # direnv (autoset env)
           - direnv
+          # mtr (trace route)
+          - mtr
         state: present
 
     - name: BASIC - Set vim editor for git
