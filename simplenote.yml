@@ -3,11 +3,20 @@
   become: yes
 
   vars:
-    simplenote_version: 1.14.0
-    simplenote_url: "https://github.com/Automattic/simplenote-electron/releases/download/v{{ simplenote_version }}/Simplenote-linux-{{ simplenote_version }}-amd64.deb"
+    github_project: Automattic/simplenote-electron
     simplenote_tmp: "/tmp/simplenote"
 
   tasks:
+
+    - name: SIMPLENOTE - Get latest release
+      uri:
+        url: "https://api.github.com/repos/{{ github_project }}/releases/latest"
+        return_content: yes
+      register: github_api
+
+    - name: SIMPLENOTE - Register latest release
+      set_fact:
+        github_release: "{{ github_api.json.tag_name }}"
 
     - name: SIMPLENOTE - Creates temporary directory
       file:
@@ -16,7 +25,7 @@
 
     - name: SIMPLENOTE - Download package
       get_url:
-        url: "{{ simplenote_url }}"
+        url: "https://github.com/{{ github_project }}/releases/download/{{ github_release }}/Simplenote-linux-{{ github_release | regex_replace('^v') }}-amd64.deb"
         dest: "{{ simplenote_tmp }}/simplenote.deb"
         force: yes
 
