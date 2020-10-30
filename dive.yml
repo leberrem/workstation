@@ -3,10 +3,20 @@
   become: yes
 
   vars:
-    dive_url: https://github.com/wagoodman/dive/releases/download/v0.9.1/dive_0.9.1_linux_amd64.deb
+    github_project: wagoodman/dive
     dive_tmp: /tmp/dive
 
   tasks:
+
+    - name: DIVE - Get latest release
+      uri:
+        url: "https://api.github.com/repos/{{ github_project }}/releases/latest"
+        return_content: yes
+      register: github_api
+
+    - name: DIVE - Register latest release
+      set_fact:
+        github_release: "{{ github_api.json.tag_name }}"
 
     - name: DIVE - Creates temporary directory
       file:
@@ -15,7 +25,7 @@
 
     - name: DIVE - Download dive
       get_url:
-        url: "{{ dive_url }}"
+        url: "https://github.com/{{ github_project }}/releases/download/{{ github_release }}/dive_{{ github_release | regex_replace('^v') }}_linux_amd64.deb"
         dest: "{{ dive_tmp }}/dive.deb"
         force: yes
 
