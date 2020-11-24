@@ -3,11 +3,10 @@
 
   tasks:
 
-    - name: OPENSTACK - install client app with pip
+    - name: OPENSTACK - install client app
       become: yes
-      pip:
-        name:
-          - python-openstackclient
-          - python-novaclient
-          - python-neutronclient
+      snap:
+        name: openstackclients
+        classic: yes
+        state: present
 
