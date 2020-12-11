@@ -177,3 +177,6 @@ gitkraken:
 
 adobereader:
 	ansible-playbook adobereader.yml
+
+nosqlbooster:
+	ansible-playbook nosqlbooster.yml

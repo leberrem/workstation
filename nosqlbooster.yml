@@ -1,0 +1,41 @@
+- hosts: localhost
+  connection: local
+
+  vars:
+    nosqlbooster_version: "6.2.5"
+    nosqlbooster_url: "https://s3.mongobooster.com/download/releasesv6/nosqlbooster4mongo-{{ nosqlbooster_version }}.AppImage"
+    nosqlbooster_tmp: "/tmp/nosqlbooster"
+
+  tasks:
+
+    - name: NOSQLBOOSTER - creates application directory
+      become: yes
+      file:
+        path: "/opt/nosqlbooster"
+        state: directory
+
+    - name: NOSQLBOOSTER - Download application
+      become: yes
+      get_url:
+        url: "{{ nosqlbooster_url }}"
+        dest: '/opt/nosqlbooster/nosqlbooster.AppImage'
+        mode: 775
+        force: yes
+
+    - name: NOSQLBOOSTER - Copy icon image
+      become: yes
+      copy:
+        src: files/nosqlbooster.png
+        dest: /opt/nosqlbooster/icon.png
+
+    - name: NOSQLBOOSTER - Create symbolic link
+      become: yes
+      file:
+        src: "/opt/nosqlbooster/nosqlbooster.AppImage"
+        dest: "/usr/bin/nosqlbooster"
+        state: link
+
+    - name: NOSQLBOOSTER - create shortcut
+      template:
+        src: templates/nosqlbooster.j2
+        dest: ~/.local/share/applications/nosqlbooster.desktop

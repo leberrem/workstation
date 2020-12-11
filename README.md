@@ -10,6 +10,7 @@
 * Dive : `make dive`
 * Arduino IDE : `make arduino`
 * Robo3T : `make robo3t`
+* NoSQLBooster : `make nosqlbooster`
 * SQLDeveloper : `make sqldeveloper`
 * Chrome : `make chrome`
 * NodeJS : `make nodejs`
