@@ -1,0 +1,26 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: OPENVPN - install apt-transport-https
+      package:
+        name: apt-transport-https
+        state: present
+
+    - name: OPENVPN - add openvpn repository key
+      apt_key:
+        url: 'https://swupdate.openvpn.net/repos/openvpn-repo-pkg-key.pub'
+        state: present
+
+    - name: OPENVPN - add openvpn repository
+      get_url:
+        url: "https://swupdate.openvpn.net/community/openvpn3/repos/openvpn3-{{ ansible_distribution_release }}.list"
+        dest: "/etc/apt/sources.list.d/openvpn3.list"
+
+    - name: OPENVPN - install openvpn
+      apt:
+        name: openvpn3
+        state: present
+        update_cache: yes

@@ -33,9 +33,6 @@
           - vlc
           # samba (shared ressources)
           - samba
-          # openvpn (openVPN client)
-          - openvpn
-          - openresolv
           # jq (JSON Query)
           - jq
           # dconf-editor

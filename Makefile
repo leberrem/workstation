@@ -180,3 +180,6 @@ adobereader:
 
 nosqlbooster:
 	ansible-playbook nosqlbooster.yml
+
+openvpn:
+	ansible-playbook openvpn.yml
