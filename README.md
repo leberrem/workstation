@@ -75,6 +75,7 @@
 * Krita : `make krita`
 * clockify : `make clockify`
 * Adobe Reader : `make adobereader`
+* OpenVPN : `make openvpn`
 
 ## Requirements
 
