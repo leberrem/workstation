@@ -2,7 +2,7 @@
   connection: local
 
   vars:
-    sqldeveloper_url: "https://download.oracle.com/otn/java/sqldeveloper/sqldeveloper-19.2.0.206.2117-no-jre.zip"
+    sqldeveloper_url: "https://download.oracle.com/otn/java/sqldeveloper/sqldeveloper-20.4.1.407.0006-no-jre.zip"
     sqldeveloper_tmp: "/tmp/sqldeveloper"
 
   tasks:
