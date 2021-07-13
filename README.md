@@ -28,6 +28,7 @@
 * Rundeck-cli : `make rundeck`
 * Docker : `make docker`
 * Kubectl : `make kubectl`
+* Lens : `make lens`
 * Minikube : `make minikube`
 * Helm : `make helm`
 * OpenStack : `make openstack`

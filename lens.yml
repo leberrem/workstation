@@ -1,0 +1,30 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    lens_version: "13.6.2"
+    lens_url: "https://api.k8slens.dev/binaries/Lens-5.0.2-latest.20210705.2.amd64.deb"
+    lens_tmp: "/tmp/lens"
+
+  tasks:
+
+    - name: LENS - Creates temporary directory
+      file:
+        path: "{{ lens_tmp }}"
+        state: directory
+
+    - name: LENS - Download package
+      get_url:
+        url: "{{ lens_url }}"
+        dest: "{{ lens_tmp }}/lens.deb"
+        force: yes
+
+    - name: LENS - Install package
+      apt:
+        deb: "{{ lens_tmp }}/lens.deb"
+
+    - name: LENS - Remove temporary directory
+      file:
+        path: "{{ lens_tmp }}"
+        state: absent

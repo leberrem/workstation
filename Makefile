@@ -183,3 +183,6 @@ nosqlbooster:
 
 openvpn:
 	ansible-playbook openvpn.yml
+
+lens:
+	ansible-playbook lens.yml
