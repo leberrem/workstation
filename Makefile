@@ -189,3 +189,6 @@ lens:
 
 inkscape:
 	ansible-playbook inkscape.yml
+
+dropbox:
+	ansible-playbook dropbox.yml

@@ -78,6 +78,7 @@
 * Adobe Reader : `make adobereader`
 * OpenVPN : `make openvpn`
 * Inkscape : `make inkscape`
+* Dropbox : `make dropbox`
 
 ## Requirements
 
