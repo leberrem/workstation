@@ -77,6 +77,7 @@
 * clockify : `make clockify`
 * Adobe Reader : `make adobereader`
 * OpenVPN : `make openvpn`
+* Inkscape : `make inkscape`
 
 ## Requirements
 

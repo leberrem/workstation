@@ -186,3 +186,6 @@ openvpn:
 
 lens:
 	ansible-playbook lens.yml
+
+inkscape:
+	ansible-playbook inkscape.yml

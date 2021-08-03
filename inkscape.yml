@@ -1,0 +1,17 @@
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: INKSCAPE - add inkscape repo
+      apt_repository:
+        repo: ppa:inkscape.dev/stable
+        state: present
+        update_cache: yes
+
+    - name: INKSCAPE - install inkscape
+      apt:
+        name: inkscape
+        state: present
+
