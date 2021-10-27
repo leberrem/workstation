@@ -12,7 +12,7 @@
     - name: CURA - Download application
       become: yes
       get_url:
-        url: 'https://software.ultimaker.com/cura/Ultimaker_Cura-4.10.0.AppImage'
+        url: 'https://software.ultimaker.com/cura/Ultimaker_Cura-4.11.0.AppImage'
         dest: '/opt/cura/cura.AppImage'
         mode: 775
         force: yes
