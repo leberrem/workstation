@@ -78,11 +78,6 @@
         - "kubectx"
         - "kubens"
 
-    - name: KUBECTL - clone kubectx project
-      git:
-        repo: "https://github.com/{{ kubectx_project }}.git"
-        dest: "https://github.com/{{ kubectx_project }}.git/git"
-
     - name: KUBECTL - check OH-MY-ZSH
       stat:
         path: "/home/{{ whoami_output.stdout }}/.oh-my-zsh"
