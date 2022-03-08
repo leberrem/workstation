@@ -44,8 +44,7 @@
       with_items:
         - donjayamanne.githistory
         - ms-azuretools.vscode-docker
-        - vscoss.vscode-ansible
-        - haaaad.ansible
+        - redhat.ansible
         - rupisaini.vscode-ansible-linter
         - HashiCorp.terraform
         - samuelcolvin.jinjahtml
