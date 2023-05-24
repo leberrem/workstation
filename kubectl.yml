@@ -95,7 +95,7 @@
       - name: KUBECTL - Create kubectx and kubens ZSH completion link
         become: false
         file:
-          src: "{{ kubectx_dir }}/git/completion/{{ item }}.zsh"
+          src: "{{ kubectx_dir }}/git/completion/_{{ item }}.zsh"
           dest: "/home/{{ whoami_output.stdout }}/.oh-my-zsh/completions/_{{ item }}.zsh"
           state: link
         with_items:
@@ -103,6 +103,12 @@
           - "kubens"
 
       when: ohmyzsh.stat.isdir is defined and ohmyzsh.stat.isdir
+
+    - name: KUBECTL - install pkg-config
+      become: yes
+      apt:
+        name: pkg-config
+        state: present
 
     - name: KUBECTL - get bash completion directory
       shell: >-
